@@ -1,1 +1,3 @@
-
+tbody.ui-sortable tr {
+  cursor: move;
+}
