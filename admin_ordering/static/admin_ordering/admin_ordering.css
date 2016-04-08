@@ -1,3 +1,4 @@
+.inline-group.ui-sortable .inline-related,
 tbody.ui-sortable tr {
   cursor: move;
 }
