@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import json
 
 from django.contrib import admin
-from django.contrib.admin.options import BaseModelAdmin
+from django.contrib.admin.options import BaseModelAdmin, InlineModelAdmin
 from django.core.exceptions import ImproperlyConfigured
 from django.forms.utils import flatatt
 from django.templatetags.static import static
@@ -59,7 +59,10 @@ class OrderableAdmin(BaseModelAdmin):
                     ),
                     'stacked': isinstance(self, admin.StackedInline),
                     'tabular': isinstance(self, admin.TabularInline),
-                    'prefix': self._get_default_formset_prefix(),
+                    'prefix': (
+                        self._get_default_formset_prefix()
+                        if isinstance(self, InlineModelAdmin)
+                        else ''),
                 }),
             }),
         ))
