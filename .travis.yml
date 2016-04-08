@@ -9,6 +9,11 @@ env:
   - REQ="Django>=1.8,<1.9"
   - REQ="Django>=1.9,<1.10"
   # - REQ="https://github.com/django/django/archive/master.zip"
+matrix:
+  exclude:
+    - python: "3.5"
+      env: REQ="Django>=1.7,<1.8"
+      # Django 1.7 does not support Python 3.5
 install:
   - pip install $REQ coverage flake8 pytz
 script: "python testapp/runtests.py && flake8 ."
