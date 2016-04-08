@@ -38,38 +38,35 @@ class OrderableAdmin(BaseModelAdmin):
 
     @property
     def media(self):
-        try:
-            media = super(OrderableAdmin, self).media
-            media.add_css({'all': (
-                'admin_ordering/admin_ordering.css',
-            )})
+        media = super(OrderableAdmin, self).media
+        media.add_css({'all': (
+            'admin_ordering/admin_ordering.css',
+        )})
 
-            if not isinstance(self, InlineModelAdmin):
-                context = {'field': self.ordering_field}
-            else:
-                if not self.fk_name:
-                    raise ImproperlyConfigured(
-                        '%r requires a `fk_name` -- we are too dumb/lazy to'
-                        ' determine it ourselves. Thanks!' % (self.__class__))
+        if not isinstance(self, InlineModelAdmin):
+            context = {'field': self.ordering_field}
+        else:
+            if not self.fk_name:
+                raise ImproperlyConfigured(
+                    '%r requires a `fk_name` -- we are too dumb/lazy to'
+                    ' determine it ourselves. Thanks!' % (self.__class__))
 
-                context = {
-                    'field': self.ordering_field,
-                    'prefix': get_default_formset_prefix(
-                        self.parent_model, self.model, self.fk_name),
-                    'stacked': isinstance(self, admin.StackedInline),
-                    'tabular': isinstance(self, admin.TabularInline),
-                }
+            context = {
+                'field': self.ordering_field,
+                'prefix': get_default_formset_prefix(
+                    self.parent_model, self.model, self.fk_name),
+                'stacked': isinstance(self, admin.StackedInline),
+                'tabular': isinstance(self, admin.TabularInline),
+            }
 
-            media.add_js((
-                'admin_ordering/jquery-ui-1.11.4.custom.min.js',
-                JS('admin_ordering/admin_ordering.js', {
-                    'id': 'admin-ordering-context',
-                    'data-context': json.dumps(context),
-                }),
-            ))
-            return media
-        except Exception as exc:
-            print(exc)
+        media.add_js((
+            'admin_ordering/jquery-ui-1.11.4.custom.min.js',
+            JS('admin_ordering/admin_ordering.js', {
+                'id': 'admin-ordering-context',
+                'data-context': json.dumps(context),
+            }),
+        ))
+        return media
 
 
 class JS(object):
