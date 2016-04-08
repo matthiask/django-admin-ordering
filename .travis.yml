@@ -16,6 +16,8 @@ matrix:
   exclude:
     - python: "2.7"
       env: REQ="Django>=1.4,<1.5"
+    - python: "3.4"
+      env: REQ="Django>=1.4,<1.5"
     - python: "3.5"
       env: REQ="Django>=1.4,<1.5"
     - python: "3.5"
