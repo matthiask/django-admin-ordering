@@ -64,7 +64,8 @@ settings.configure(
     }],
 )
 
-django.setup()
+if hasattr(django, 'setup'):
+    django.setup()
 
 
 def runtests():

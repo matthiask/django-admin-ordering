@@ -1,6 +1,5 @@
 language: python
 sudo: false
-dist: trusty
 python:
   - "2.7"
   - "3.4"
@@ -12,7 +11,19 @@ env:
   - REQ="Django>=1.7,<1.8"
   - REQ="Django>=1.8,<1.9"
   - REQ="Django>=1.9,<1.10"
-  - REQ="https://github.com/django/django/archive/master.zip"
+  # - REQ="https://github.com/django/django/archive/master.zip"
+matrix:
+  exclude:
+    - python: "2.7"
+      env: REQ="Django>=1.4,<1.5"
+    - python: "3.5"
+      env: REQ="Django>=1.4,<1.5"
+    - python: "3.5"
+      env: REQ="Django>=1.5,<1.6"
+    - python: "3.5"
+      env: REQ="Django>=1.6,<1.7"
+    - python: "3.5"
+      env: REQ="Django>=1.7,<1.8"
 install:
   - pip install $REQ coverage flake8 pytz
 script: "python testapp/runtests.py && flake8 ."
