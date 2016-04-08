@@ -1,0 +1,13 @@
+language: python
+sudo: false
+dist: trusty
+python:
+  - "2.7"
+  - "3.4"
+  - "3.5"
+env:
+  - REQ="Django>=1.9,<1.10"
+  - REQ="https://github.com/django/django/archive/master.zip"
+install:
+  - pip install $REQ coverage flake8 pytz
+script: "python testapp/runtests.py && flake8 ."

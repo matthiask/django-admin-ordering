@@ -1,0 +1,8 @@
+include AUTHORS
+include CONTRIBUTING.rst
+include LICENSE
+include MANIFEST.in
+include README.rst
+recursive-include admin_ordering/static *
+recursive-include admin_ordering/locale *
+recursive-include admin_ordering/templates *
