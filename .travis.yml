@@ -14,8 +14,6 @@ env:
   # - REQ="https://github.com/django/django/archive/master.zip"
 matrix:
   exclude:
-    - python: "2.7"
-      env: REQ="Django>=1.4,<1.5"
     - python: "3.4"
       env: REQ="Django>=1.4,<1.5"
     - python: "3.5"
