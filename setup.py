@@ -38,7 +38,7 @@ setup(
         ],
     },
     install_requires=[
-        'Django>=1.9',
+        # 'Django>=1.9',
     ],
     classifiers=[
         # 'Development Status :: 5 - Production/Stable',
