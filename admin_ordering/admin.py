@@ -2,8 +2,9 @@ from __future__ import absolute_import, unicode_literals
 
 import json
 
-from django import forms
+from django.contrib import admin
 from django.contrib.admin.options import BaseModelAdmin
+from django.core.exceptions import ImproperlyConfigured
 from django.forms.utils import flatatt
 from django.templatetags.static import static
 from django.utils.html import format_html, mark_safe
@@ -15,9 +16,34 @@ __all__ = ('OrderableAdmin',)
 class OrderableAdmin(BaseModelAdmin):
     ordering_field = 'ordering'
 
+    def _get_default_formset_prefix(self):
+        # Mostly lifted from django/forms/models.py
+
+        if not self.fk_name:
+            raise ImproperlyConfigured(
+                '%r requires a `fk_name` -- we are too dumb/lazy to determine'
+                ' it ourselves. Thanks!' % (self.__class__))
+
+        try:
+            from django.db.models.fields.related import RelatedObject
+
+            return RelatedObject(
+                self.parent_model,
+                self.model,
+                self.model._meta.get_field(self.fk_name),
+            ).get_accessor_name().replace('+', '')
+
+        except ImportError:
+            pass
+
+        # Newer versions of Django
+        fk = self.model._meta.get_field(self.fk_name),
+        rel = fk.remote_field if hasattr(fk, 'remote_field') else fk.rel
+        return rel.get_accessor_name(model=self.model).replace('+', '')
+
     @property
     def media(self):
-        media = forms.Media()
+        media = super(OrderableAdmin, self).media
         media.add_css({'all': (
             'admin_ordering/admin_ordering.css',
         )})
@@ -27,6 +53,13 @@ class OrderableAdmin(BaseModelAdmin):
                 'id': 'admin-ordering-context',
                 'data-context': json.dumps({
                     'field': self.ordering_field,
+                    'model': '%s_%s' % (
+                        self.model._meta.app_label,
+                        self.model._meta.model_name,
+                    ),
+                    'stacked': isinstance(self, admin.StackedInline),
+                    'tabular': isinstance(self, admin.TabularInline),
+                    'prefix': self._get_default_formset_prefix(),
                 }),
             }),
         ))
