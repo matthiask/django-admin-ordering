@@ -45,9 +45,8 @@ settings.configure(
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.locale.LocaleMiddleware',
-    ) + (
         'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    ) if django.VERSION > (1, 7) else (),
+    ),
     USE_TZ=True,
     LANGUAGES=(('en', 'English'), ('de', 'German')),
     TEMPLATES=[{

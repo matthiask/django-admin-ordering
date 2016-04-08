@@ -5,10 +5,7 @@ import json
 from django.contrib import admin
 from django.contrib.admin.options import BaseModelAdmin, InlineModelAdmin
 from django.core.exceptions import ImproperlyConfigured
-try:
-    from django.forms.utils import flatatt
-except ImportError:  # pragma: no cover
-    from django.forms.util import flatatt
+from django.forms.utils import flatatt
 from django.templatetags.static import static
 from django.utils.html import format_html, mark_safe
 
