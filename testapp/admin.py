@@ -8,6 +8,7 @@ from testapp import models
 class Child1Inline(OrderableAdmin, admin.TabularInline):
     model = models.Child1
     fk_name = 'parent'
+    ordering_field = 'ordering'
 
 
 admin.site.register(
@@ -21,6 +22,7 @@ admin.site.register(
 class Child2Inline(OrderableAdmin, admin.TabularInline):
     model = models.Child2
     fk_name = 'parent'
+    ordering_field = 'ordering'
 
 
 admin.site.register(
@@ -34,6 +36,7 @@ admin.site.register(
 class Child3Inline(OrderableAdmin, admin.TabularInline):
     model = models.Child3
     fk_name = 'parent'
+    ordering_field = 'ordering'
 
 
 admin.site.register(
@@ -47,6 +50,7 @@ admin.site.register(
 class Parent4Admin(OrderableAdmin, admin.ModelAdmin):
     list_display = ('title', '_orderaaaaa')
     list_editable = ('_orderaaaaa',)
+    ordering_field = '_orderaaaaa'
 
 
 admin.site.register(

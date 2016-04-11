@@ -126,5 +126,5 @@ class OrderableAdminTest(TestCase):
         )
         self.assertContains(
             response,
-            'data-context="{&quot;field&quot;: &quot;ordering&quot;}"',
+            'data-context="{&quot;field&quot;: &quot;_orderaaaaa&quot;}"',
         )
