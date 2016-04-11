@@ -6,7 +6,8 @@ class Parent1(models.Model):
 
 
 class Child1(models.Model):
-    parent = models.ForeignKey(Parent1, related_name='children')
+    parent = models.ForeignKey(
+        Parent1, related_name='children', on_delete=models.CASCADE)
 
 
 class Parent2(models.Model):
@@ -14,7 +15,8 @@ class Parent2(models.Model):
 
 
 class Child2(models.Model):
-    parent = models.ForeignKey(Parent2, related_name='+children')
+    parent = models.ForeignKey(
+        Parent2, related_name='+children', on_delete=models.CASCADE)
 
 
 class Parent3(models.Model):
@@ -22,7 +24,7 @@ class Parent3(models.Model):
 
 
 class Child3(models.Model):
-    parent = models.ForeignKey(Parent3)
+    parent = models.ForeignKey(Parent3, on_delete=models.CASCADE)
 
 
 class Parent4(models.Model):
