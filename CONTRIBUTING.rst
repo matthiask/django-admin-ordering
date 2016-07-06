@@ -1,6 +1,6 @@
-=======================
-Contributing to FeinCMS
-=======================
+============
+Contributing
+============
 
 Submission guidelines
 =====================
