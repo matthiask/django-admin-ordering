@@ -29,9 +29,13 @@ django.jQuery(function($){
             }
         });
     } else {
-        $('#result_list tbody').sortable({
+        var $tbody = $('#result_list tbody');
+        if (!$tbody.find('.field-' + data.field + ' input').length)
+            return;
+
+        $tbody.sortable({
             update: function(event, ui) {
-                $('#result_list tbody tr').each(function(index) {
+                $tbody.find('tr').each(function(index) {
                     var row = $(this);
                     row.find('.field-' + data.field + ' input').val(10 * (index + 1));
                     row.removeClass('row1 row2').addClass((index % 2) ? 'row2' : 'row1');
