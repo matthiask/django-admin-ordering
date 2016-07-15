@@ -23,8 +23,8 @@ Steps
 Limitations
 ===========
 
-- Newly created inlines are not automatically assigned a good ordering
-  value. This could be easily fixed for Django 1.9 by handling the
+- Starting with Django 1.9 newly created inlines are automatically assigned
+  a good ordering value. Earlier versions do not support the required
   ``formset:added`` signal.
 - Only one inline can use this app per model right now.
 - ``OrderableAdmin`` can be used both for inlines and parents, but this

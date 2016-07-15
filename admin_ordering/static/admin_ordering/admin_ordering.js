@@ -7,25 +7,25 @@ django.jQuery(function($){
 
     var data = JSON.parse(context.getAttribute('data-context'));
 
+    function updateOrdering(nodes) {
+        nodes.each(function(index) {
+            var row = $(this);
+            row.find('.field-' + data.field + ' input').val(10 * (index + 1));
+            row.removeClass('row1 row2').addClass((index % 2) ? 'row2' : 'row1');
+        });
+    }
+
     if (data.tabular) {
         $('#' + data.prefix + '-group tbody').sortable({
             update: function(event, ui) {
-                $('.dynamic-' + data.prefix).each(function(index) {
-                    var row = $(this);
-                    row.find('.field-' + data.field + ' input').val(10 * (index + 1));
-                    row.removeClass('row1 row2').addClass((index % 2) ? 'row2' : 'row1');
-                });
+                updateOrdering($('.dynamic-' + data.prefix));
             }
         });
     } else if (data.stacked) {
         $('#' + data.prefix + '-group').sortable({
             items: '>.inline-related',
             update: function(event, ui) {
-                $('.dynamic-' + data.prefix).each(function(index) {
-                    var row = $(this);
-                    row.find('.field-' + data.field + ' input').val(10 * (index + 1));
-                    row.removeClass('row1 row2').addClass((index % 2) ? 'row2' : 'row1');
-                });
+                updateOrdering($('.dynamic-' + data.prefix));
             }
         });
     } else {
@@ -35,11 +35,16 @@ django.jQuery(function($){
 
         $tbody.sortable({
             update: function(event, ui) {
-                $tbody.find('tr').each(function(index) {
-                    var row = $(this);
-                    row.find('.field-' + data.field + ' input').val(10 * (index + 1));
-                    row.removeClass('row1 row2').addClass((index % 2) ? 'row2' : 'row1');
-                });
+                updateOrdering($tbody.find('tr'));
+            }
+        });
+    }
+
+    if (data.tabular || data.stacked) {
+        // Yay, Django 1.9 or better!
+        $(document).on('formset:added', function newForm(event, row) {
+            if (row.hasClass('dynamic-' + data.prefix)) {
+                updateOrdering($('.dynamic-' + data.prefix));
             }
         });
     }
