@@ -26,7 +26,6 @@ Limitations
 - Starting with Django 1.9 newly created inlines are automatically assigned
   a good ordering value. Earlier versions do not support the required
   ``formset:added`` signal.
-- Only one inline can use this app per model right now.
 - ``OrderableAdmin`` can be used both for inlines and parents, but this
   also means that you cannot register a model directly with
   ``OrderableAdmin``.

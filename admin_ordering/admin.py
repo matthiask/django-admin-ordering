@@ -62,7 +62,7 @@ class OrderableAdmin(BaseModelAdmin):
         media.add_js((
             'admin_ordering/jquery-ui-1.11.4.custom.min.js',
             JS('admin_ordering/admin_ordering.js', {
-                'id': 'admin-ordering-context',
+                'class': 'admin-ordering-context',
                 'data-context': json.dumps(context),
             }),
         ))

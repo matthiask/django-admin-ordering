@@ -2,10 +2,6 @@
 /* eslint indent:[2,4] */
 /* eslint comma-dangle:[2,"never"] */
 django.jQuery(function($){
-    var context = document.getElementById('admin-ordering-context');
-    if (!context) return;
-
-    var data = JSON.parse(context.getAttribute('data-context'));
 
     function updateOrdering(nodes) {
         nodes.each(function(index) {
@@ -15,30 +11,35 @@ django.jQuery(function($){
         });
     }
 
-    if (data.tabular) {
-        $('#' + data.prefix + '-group tbody').sortable({
-            update: function(event, ui) {
-                updateOrdering($('.dynamic-' + data.prefix));
-            }
-        });
-    } else if (data.stacked) {
-        $('#' + data.prefix + '-group').sortable({
-            items: '>.inline-related',
-            update: function(event, ui) {
-                updateOrdering($('.dynamic-' + data.prefix));
-            }
-        });
-    } else {
-        var $tbody = $('#result_list tbody');
-        if (!$tbody.find('.field-' + data.field + ' input').length)
-            return;
+    $('.admin-ordering-context:not(.activated)').addClass('activated').each(function() {
 
-        $tbody.sortable({
-            update: function(event, ui) {
-                updateOrdering($tbody.find('tr'));
-            }
-        });
-    }
+        data = JSON.parse(this.getAttribute('data-context'));
+
+        if (data.tabular) {
+            $('#' + data.prefix + '-group tbody').sortable({
+                update: function(event, ui) {
+                    updateOrdering($('.dynamic-' + data.prefix));
+                }
+            });
+        } else if (data.stacked) {
+            $('#' + data.prefix + '-group').sortable({
+                items: '>.inline-related',
+                update: function(event, ui) {
+                    updateOrdering($('.dynamic-' + data.prefix));
+                }
+            });
+        } else {
+            var $tbody = $('#result_list tbody');
+            if (!$tbody.find('.field-' + data.field + ' input').length)
+                return;
+
+            $tbody.sortable({
+                update: function(event, ui) {
+                    updateOrdering($tbody.find('tr'));
+                }
+            });
+        }
+    });
 
     if (data.tabular || data.stacked) {
         // Yay, Django 1.9 or better!
