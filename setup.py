@@ -26,7 +26,7 @@ setup(
     ),
     include_package_data=True,
     install_requires=[
-        # 'Django>=1.9',
+        'django-js-asset',
     ],
     classifiers=[
         # 'Development Status :: 5 - Production/Stable',
@@ -47,8 +47,9 @@ setup(
     ],
     zip_safe=False,
     tests_require=[
-        'Django',
         'coverage',
+        'django',
+        'django-js-asset',
         'pytz',
     ],
     test_suite='testapp.runtests.runtests',
