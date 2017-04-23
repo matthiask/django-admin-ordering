@@ -54,7 +54,6 @@ settings.configure(
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.locale.LocaleMiddleware',
-        'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     ),
     SILENCED_SYSTEM_CHECKS=['1_10.W001'],  # Middleware
     USE_TZ=True,
