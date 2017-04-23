@@ -5,7 +5,6 @@ import json
 from django.contrib import admin
 from django.contrib.admin.options import BaseModelAdmin, InlineModelAdmin
 from django.core.exceptions import ImproperlyConfigured
-from django.forms.utils import flatatt
 
 from js_asset import JS
 
