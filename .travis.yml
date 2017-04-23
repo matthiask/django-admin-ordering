@@ -22,5 +22,5 @@ matrix:
   allow_failures:
     - env: REQ="https://github.com/django/django/archive/master.zip"
 install:
-  - pip install $REQ coverage flake8 pytz
+  - pip install $REQ coverage django-js-asset flake8 pytz
 script: "python testapp/runtests.py && flake8 ."
