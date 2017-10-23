@@ -17,13 +17,14 @@ django.jQuery(function($){
 
         if (data.tabular) {
             $('#' + data.prefix + '-group tbody').sortable({
+                items: '>.has_original',
                 update: function(event, ui) {
                     updateOrdering($('.dynamic-' + data.prefix));
                 }
             });
         } else if (data.stacked) {
             $('#' + data.prefix + '-group').sortable({
-                items: '>.inline-related',
+                items: '>.has_original',
                 update: function(event, ui) {
                     updateOrdering($('.dynamic-' + data.prefix));
                 }

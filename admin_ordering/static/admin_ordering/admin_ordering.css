@@ -1,4 +1,4 @@
-.inline-group.ui-sortable .inline-related,
-tbody.ui-sortable tr {
+.inline-group.ui-sortable .inline-related.has_original,
+tbody.ui-sortable tr.has_original {
   cursor: move;
 }

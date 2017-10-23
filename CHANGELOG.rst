@@ -8,6 +8,8 @@ Change log
 
 - Fixed the package to not install the test suite app when installing
   using pip. Thanks to Melvyn Sopacua for the contribution!
+- Fixed an elusive bug with our formsets handling. Newly added content
+  blocks have to be saved before they can be reordered.
 
 
 `0.6.0`_ (2017-05-15)
