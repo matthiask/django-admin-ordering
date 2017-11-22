@@ -11,6 +11,7 @@ env:
   - REQ="Django>=1.9,<1.10"
   - REQ="Django>=1.10,<1.11"
   - REQ="Django>=1.11,<2.0"
+  - REQ="Django==2.0rc1"
   - REQ="https://github.com/django/django/archive/master.zip"
 matrix:
   exclude:
@@ -18,6 +19,10 @@ matrix:
       env: REQ="Django>=1.7,<1.8"
       # Django 1.7 does not support Python 3.5
     - python: "2.7"
+      env: REQ="Django==2.0rc1"
+    - python: "2.7"
+      env: REQ="https://github.com/django/django/archive/master.zip"
+    - python: "3.4"
       env: REQ="https://github.com/django/django/archive/master.zip"
   allow_failures:
     - env: REQ="https://github.com/django/django/archive/master.zip"
