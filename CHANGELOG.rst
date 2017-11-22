@@ -12,6 +12,7 @@ Change log
   blocks have to be saved before they can be reordered.
 - Extend item selector to work with stacked inlines on Django > 1.9.
   Thanks to Fabian Germann for the fix.
+- Use tox for running tests and style checks.
 
 
 `0.6.0`_ (2017-05-15)

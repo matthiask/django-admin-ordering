@@ -28,4 +28,4 @@ matrix:
     - env: REQ="https://github.com/django/django/archive/master.zip"
 install:
   - pip install $REQ coverage django-js-asset flake8 pytz
-script: "python testapp/runtests.py && flake8 ."
+script: cd tests && ./manage.py test testapp && cd ..
