@@ -47,14 +47,12 @@ TEMPLATES = [
 ]
 
 MIDDLEWARE_CLASSES = MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 # Do not warn about MIDDLEWARE_CLASSES
 SILENCED_SYSTEM_CHECKS = ['1_10.W001']
