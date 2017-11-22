@@ -24,7 +24,7 @@ django.jQuery(function($){
             });
         } else if (data.stacked) {
             $('#' + data.prefix + '-group').sortable({
-                items: '>.has_original',
+                items: '>.has_original,>>.has_original',
                 update: function(event, ui) {
                     updateOrdering($('.dynamic-' + data.prefix));
                 }
