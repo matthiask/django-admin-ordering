@@ -10,6 +10,8 @@ Change log
   using pip. Thanks to Melvyn Sopacua for the contribution!
 - Fixed an elusive bug with our formsets handling. Newly added content
   blocks have to be saved before they can be reordered.
+- Extend item selector to work with stacked inlines on Django > 1.9.
+  Thanks to Fabian Germann for the fix.
 
 
 `0.6.0`_ (2017-05-15)
