@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import json
 
+from django import forms
 from django.contrib import admin
 from django.contrib.admin.options import BaseModelAdmin, InlineModelAdmin
 from django.core.exceptions import ImproperlyConfigured
@@ -37,11 +38,6 @@ class OrderableAdmin(BaseModelAdmin):
 
     @property
     def media(self):
-        media = super(OrderableAdmin, self).media
-        media.add_css({'all': (
-            'admin_ordering/admin_ordering.css',
-        )})
-
         if not isinstance(self, InlineModelAdmin):
             context = {'field': self.ordering_field}
         else:
@@ -58,11 +54,15 @@ class OrderableAdmin(BaseModelAdmin):
                 'tabular': isinstance(self, admin.TabularInline),
             }
 
-        media.add_js((
-            'admin_ordering/jquery-ui-1.11.4.custom.min.js',
-            JS('admin_ordering/admin_ordering.js', {
-                'class': 'admin-ordering-context',
-                'data-context': json.dumps(context),
-            }),
-        ))
-        return media
+        return super(OrderableAdmin, self).media + forms.Media(
+            css={'all': (
+                'admin_ordering/admin_ordering.css',
+            )},
+            js=[
+                'admin_ordering/jquery-ui-1.11.4.custom.min.js',
+                JS('admin_ordering/admin_ordering.js', {
+                    'class': 'admin-ordering-context',
+                    'data-context': json.dumps(context),
+                }),
+            ],
+        )

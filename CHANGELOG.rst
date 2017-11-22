@@ -13,6 +13,8 @@ Change log
 - Extend item selector to work with stacked inlines on Django > 1.9.
   Thanks to Fabian Germann for the fix.
 - Use tox for running tests and style checks.
+- Fixed the package to work with the new ``forms.Media`` merging
+  introduced in Django 2.0.
 
 
 `0.6.0`_ (2017-05-15)
