@@ -6,6 +6,10 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+
+`0.7.0`_ (2018-01-25)
+~~~~~~~~~~~~~~~~~~~~~
+
 - Fixed the package to not install the test suite app when installing
   using pip. Thanks to Melvyn Sopacua for the contribution!
 - Fixed an elusive bug with our formsets handling. Newly added content
@@ -68,4 +72,5 @@ Initial public version.
 .. _0.4.0: https://github.com/matthiask/django-admin-ordering/compare/0.3.0...0.4.0
 .. _0.5.0: https://github.com/matthiask/django-admin-ordering/compare/0.4.0...0.5.0
 .. _0.6.0: https://github.com/matthiask/django-admin-ordering/compare/0.5.0...0.6.0
-.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.6.0...master
+.. _0.7.0: https://github.com/matthiask/django-admin-ordering/compare/0.6.0...0.7.0
+.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.7.0...master
