@@ -4,9 +4,12 @@
 django.jQuery(function($){
 
     function updateOrdering(nodes) {
+        var incOrdering = 10;
+        var maxOrdering = (nodes.length * incOrdering);
         nodes.each(function(index) {
             var row = $(this);
-            row.find('.field-' + data.field + ' input').val(10 * (index + 1));
+            var rowOrdering = data.fieldDesc ? (maxOrdering - (incOrdering * index)) : (incOrdering * (index + 1));
+            row.find('.field-' + data.field + ' input').val(rowOrdering);
             row.removeClass('row1 row2').addClass((index % 2) ? 'row2' : 'row1');
         });
     }
@@ -14,6 +17,13 @@ django.jQuery(function($){
     $('.admin-ordering-context:not(.activated)').addClass('activated').each(function() {
 
         data = JSON.parse(this.getAttribute('data-context'));
+
+        if (data.field.startsWith('-')) {
+            data.field = data.field.substring(1);
+            data.fieldDesc = true;
+        } else {
+            data.fieldDesc = false;
+        }
 
         if (data.tabular) {
             $('#' + data.prefix + '-group tbody').sortable({
