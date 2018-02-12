@@ -18,6 +18,9 @@ django.jQuery(function($){
         if (data.tabular) {
             $('#' + data.prefix + '-group tbody').sortable({
                 items: '>.has_original',
+                start: function(event, ui){
+                    ui.placeholder.height(ui.item.height());
+                },
                 update: function(event, ui) {
                     updateOrdering($('.dynamic-' + data.prefix));
                 }
@@ -25,6 +28,9 @@ django.jQuery(function($){
         } else if (data.stacked) {
             $('#' + data.prefix + '-group').sortable({
                 items: '>.has_original,>>.has_original',
+                start: function(event, ui){
+                    ui.placeholder.height(ui.item.height());
+                },
                 update: function(event, ui) {
                     updateOrdering($('.dynamic-' + data.prefix));
                 }
@@ -35,6 +41,9 @@ django.jQuery(function($){
                 return;
 
             $tbody.sortable({
+                start: function(event, ui){
+                    ui.placeholder.height(ui.item.height());
+                },
                 update: function(event, ui) {
                     updateOrdering($tbody.find('tr'));
                 }
