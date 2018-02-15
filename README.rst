@@ -14,8 +14,10 @@ Steps
 2. Inherit ``admin_ordering.admin.OrderableAdmin`` in your own
    ``ModelAdmin`` and ``StackedInline``/``TabularInline`` subclasses and
    set ``ordering_field`` to a field name of the ordering integer field.
-   Also set ``fk_name`` to the parent foreign key if you want orderable
-   inlines. Do absolutely nothing if you want an orderable changelist.
+   Negative ordering (e.g. for a priority field) is also supported,
+   simply prepend a minus sign to the ordering field. Also set
+   ``fk_name`` to the parent foreign key if you want orderable inlines.
+   Do absolutely nothing if you want an orderable changelist.
 3. Ensure that the field is displayed in the change form if you define
    fieldsets yourself, or is contained in ``list_editable`` for change lists.
 4. Report any bugs you find (patches welcome)!

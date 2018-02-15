@@ -6,6 +6,12 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+The following two changes were contributed by Fabio Caccamo:
+
+- Preserved the placeholder height when dragging starts.
+- Added support for a descending ordering field, e.g. for a priority
+  field.
+
 
 `0.7.0`_ (2018-01-25)
 ~~~~~~~~~~~~~~~~~~~~~
