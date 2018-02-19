@@ -1,3 +1,68 @@
 .ui-sortable-handle {
-  cursor: move;
+    cursor: auto;
+}
+
+.ui-sortable-helper {
+    opacity: 0.8;
+    border-top: 1px dashed #CCCCCC;
+    border-bottom: 1px dashed #CCCCCC;
+}
+
+.ui-sortable-helper > td,
+.ui-sortable-helper > th {
+    border-bottom: none;
+}
+
+.admin-ordering-field {
+    cursor: row-resize;
+    vertical-align: middle !important;
+}
+
+.admin-ordering-field input {
+    display: none;
+}
+
+.admin-ordering-field::after {
+    content: "";
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-size: 14px 14px;
+    background-image: url('admin_ordering-icon.svg');
+}
+
+.inline-related.stacked .admin-ordering-field::after {
+    vertical-align: -webkit-baseline-middle !important;
+}
+
+.inline-related .admin-ordering-field {
+    cursor: auto;
+}
+
+.inline-related .admin-ordering-field::after {
+    opacity: 0.3;
+    display: inline-block;
+    margin-top: 7px;
+}
+
+.inline-related.tabular .ui-sortable-handle {
+    padding: 0;
+}
+
+.inline-related.tabular .ui-sortable-placeholder td {
+    display: none;
+}
+
+.inline-related.tabular .admin-ordering-field::after {
+    margin-top: 0px;
+}
+
+.inline-related.has_original .admin-ordering-field,
+.inline-related .has_original .admin-ordering-field  {
+    cursor: row-resize;
+}
+
+.inline-related.has_original .admin-ordering-field::after,
+.inline-related .has_original .admin-ordering-field::after  {
+    opacity: 1.0;
 }
