@@ -5,16 +5,22 @@ django-admin-ordering -- Orderable change lists and inlines done right^Wsimple
 .. image:: https://travis-ci.org/matthiask/django-admin-ordering.svg?branch=master
     :target: https://travis-ci.org/matthiask/django-admin-ordering
 
+Please refer to the Travis CI build linked above for the currently
+supported combinations of Python and Django.
+
+
 Installation
 ============
 
 ``pip install django-admin-ordering``, and add ``admin_ordering`` to
 ``INSTALLED_APPS``.
 
+
 Usage
 =====
 
 First, you need a model ordered by an integer field.
+
 
 Orderable change lists
 ~~~~~~~~~~~~~~~~~~~~~~
