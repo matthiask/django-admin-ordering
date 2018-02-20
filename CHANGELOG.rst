@@ -6,6 +6,10 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+
+`0.8.0`_ (2018-01-25)
+~~~~~~~~~~~~~~~~~~~~~
+
 The following changes were contributed by Fabio Caccamo:
 
 - Preserved the placeholder height when dragging starts.
@@ -82,4 +86,5 @@ Initial public version.
 .. _0.5.0: https://github.com/matthiask/django-admin-ordering/compare/0.4.0...0.5.0
 .. _0.6.0: https://github.com/matthiask/django-admin-ordering/compare/0.5.0...0.6.0
 .. _0.7.0: https://github.com/matthiask/django-admin-ordering/compare/0.6.0...0.7.0
-.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.7.0...master
+.. _0.8.0: https://github.com/matthiask/django-admin-ordering/compare/0.7.0...0.8.0
+.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.8.0...master
