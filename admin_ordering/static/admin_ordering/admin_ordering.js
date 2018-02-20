@@ -14,7 +14,39 @@ django.jQuery(function($){
         });
     }
 
+    function updatePlaceholderHeight(ui) {
+        // set placeholder height equal to item height
+        ui.placeholder.height(ui.item.outerHeight());
+    }
+
+    function hideHorizontalOverflow() {
+        // hide body horizontal overflow while dragging row
+        $('body').css('overflow-x', 'hidden');
+    }
+
+    function autoHorizontalOverflow() {
+        // reset body horizontal overflow
+        $('body').css('overflow-x', 'auto');
+    }
+
+    function enforceSortableRowsCellsSize(node) {
+        // enforce row cells size while sorting rows
+        node.find('>tr').each(function(){
+            $(this).mousedown(function(e){
+                $(this).find('td, th').each(function(){
+                    $(this).css('width', $(this).width());
+                });
+            }).mouseup(function(e){
+                $(this).find('td, th').each(function(){
+                    $(this).css('width', 'auto');
+                });
+            });
+        });
+    }
+
     $('.admin-ordering-context:not(.activated)').addClass('activated').each(function() {
+
+        var $sortable, $sortableHandle, $sortableInputWrapper = '<span class="admin-ordering-field-input-wrapper"></span>';
 
         data = JSON.parse(this.getAttribute('data-context'));
 
@@ -28,109 +60,84 @@ django.jQuery(function($){
         if (data.tabular) {
 
             $sortable = $('#' + data.prefix + '-group tbody');
+            $sortableHandle = $sortable.find('.field-' + data.field);
+            $sortableHandle.addClass('admin-ordering-field');
+            if (data.field_hide_input) {
+                $sortableHandle.addClass('admin-ordering-field-hide-input');
+            }
+            $sortableHandle.find('input').wrap($sortableInputWrapper);
             $sortable.sortable({
                 items: '>.has_original',
+                handle: $sortableHandle,
                 start: function(event, ui){
-                    // hide body horizontal overflow while dragging row
-                    $('body').css('overflow-x', 'hidden');
-
-                    // set placeholder height equal to item height
-                    ui.placeholder.height(ui.item.outerHeight());
-
-                    // fix ui item appereance
+                    hideHorizontalOverflow();
+                    updatePlaceholderHeight(ui);
+                    // fix ui item height
                     ui.item.css('height', ui.item.outerHeight());
                 },
                 update: function(event, ui) {
                     updateOrdering($('.dynamic-' + data.prefix));
                 },
                 stop: function(event, ui){
-                    // reset body horizontal overflow
-                    $('body').css('overflow-x', 'auto');
-
+                    autoHorizontalOverflow();
+                    // reset ui item height
                     ui.item.css('height', 'auto');
                 }
             });
 
-            // add custom css class to ordering field to customize it
-            $sortable.find('.field-' + data.field).addClass('admin-ordering-field');
-
-            // enforce row cells size while sorting rows
-            $sortable.find('>tr').each(function(){
-                $(this).mousedown(function(e){
-                    $(this).find('td, th').each(function(){
-                        $(this).css('width', $(this).width());
-                    });
-                }).mouseup(function(e){
-                    $(this).find('td, th').each(function(){
-                        $(this).css('width', 'auto');
-                    });
-                });
-            });
+            enforceSortableRowsCellsSize($sortable);
 
         } else if (data.stacked) {
 
             $sortable = $('#' + data.prefix + '-group');
+            $sortableHandle = $sortable.find('.field-' + data.field);
+            $sortableHandle.addClass('admin-ordering-field');
+            if (data.field_hide_input) {
+                $sortableHandle.addClass('admin-ordering-field-hide-input');
+            }
+            $sortableHandle.find('input').wrap($sortableInputWrapper);
             $sortable.sortable({
                 items: '>.has_original,>>.has_original',
+                handle: $sortableHandle,
                 start: function(event, ui){
-                    // hide body horizontal overflow while dragging row
-                    $('body').css('overflow-x', 'hidden');
-
-                    // set placeholder height equal to item height
-                    ui.placeholder.height(ui.item.outerHeight());
+                    hideHorizontalOverflow();
+                    updatePlaceholderHeight(ui);
                 },
                 update: function(event, ui) {
                     updateOrdering($('.dynamic-' + data.prefix));
                 },
                 stop: function(event, ui){
-                    // reset body horizontal overflow
-                    $('body').css('overflow-x', 'auto');
+                    autoHorizontalOverflow();
                 }
             });
 
-            // add custom css class to ordering field to customize it
-            $sortable.find('.field-' + data.field).addClass('admin-ordering-field');
-
         } else {
 
-            var $sortable = $('#result_list tbody');
-            if (!$sortable.find('.field-' + data.field + ' input').length){
+            $sortable = $('#result_list tbody');
+            $sortableHandle = $sortable.find('.field-' + data.field);
+            $sortableHandle.addClass('admin-ordering-field');
+            if (data.field_hide_input) {
+                $sortableHandle.addClass('admin-ordering-field-hide-input');
+            }
+            if (!$sortableHandle.find('input').length) {
                 return;
             }
-
+            $sortableHandle.find('input').wrap($sortableInputWrapper);
             $sortable.sortable({
-                // make the dragged row a little bit transparent
+                handle: $sortableHandle,
                 start: function(event, ui){
-                    // hide body horizontal overflow while dragging row
-                    $('body').css('overflow-x', 'hidden');
-
-                    // set placeholder height equal to item height
-                    ui.placeholder.height(ui.item.outerHeight());
+                    hideHorizontalOverflow();
+                    updatePlaceholderHeight(ui);
                 },
                 update: function(event, ui) {
                     updateOrdering($sortable.find('tr'));
                 },
                 stop: function(event, ui){
-                    // reset body horizontal overflow
-                    $('body').css('overflow-x', 'auto');
+                    autoHorizontalOverflow();
                 }
             });
 
-            // add custom css class to ordering field to customize it
-            $sortable.find('.field-' + data.field).addClass('admin-ordering-field');
-
-            // enforce row cells size while sorting rows
-            $sortable.find('>tr').each(function(){
-                $(this).mousedown(function(e){
-                    $(this).find('td, th').each(function(){
-                        $(this).css('width', $(this).width());
-                    });
-                }).mouseup(function(e){
-                    $(this).find('td, th').each(function(){
-                        $(this).css('width', 'auto');
-                    });
-                });
-            });
+            enforceSortableRowsCellsSize($sortable);
         }
     });
 
