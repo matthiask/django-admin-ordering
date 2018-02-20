@@ -5,22 +5,56 @@ django-admin-ordering -- Orderable change lists and inlines done right^Wsimple
 .. image:: https://travis-ci.org/matthiask/django-admin-ordering.svg?branch=master
     :target: https://travis-ci.org/matthiask/django-admin-ordering
 
-Steps
+Installation
+============
+
+``pip install django-admin-ordering``, and add ``admin_ordering`` to
+``INSTALLED_APPS``.
+
+Usage
 =====
 
-0. Have a model ordered by an integer field.
-1. Install ``django-admin-ordering`` and add ``admin_ordering`` to
-   ``INSTALLED_APPS``.
-2. Inherit ``admin_ordering.admin.OrderableAdmin`` in your own
-   ``ModelAdmin`` and ``StackedInline``/``TabularInline`` subclasses and
-   set ``ordering_field`` to a field name of the ordering integer field.
-   Negative ordering (e.g. for a priority field) is also supported,
-   simply prepend a minus sign to the ordering field. Also set
-   ``fk_name`` to the parent foreign key if you want orderable inlines.
-   Do absolutely nothing if you want an orderable changelist.
-3. Ensure that the field is displayed in the change form if you define
-   fieldsets yourself, or is contained in ``list_editable`` for change lists.
-4. Report any bugs you find (patches welcome)!
+First, you need a model ordered by an integer field.
+
+Orderable change lists
+~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    from admin_ordering.admin import OrderableAdmin
+
+    @admin.register(MyModel)
+    class MyModelAdmin(OrderableAdmin, admin.ModelAdmin):
+        # The field used for ordering. Prepend a minus for reverse
+        # ordering: '-order'
+        ordering_field = 'order'
+
+        # You may optionally hide the ordering field in the changelist:
+        # ordering_field_hide_input = False
+
+        # The ordering field must be included both in list_display and
+        # list_editable:
+        list_display = ('name', 'order', )
+        list_editable = ('order', )
+
+
+Orderable inlines
+~~~~~~~~~~~~~~~~
+
+::
+
+    from admin_ordering.admin import OrderableAdmin
+
+    class MyModelTabularInline(OrderableAdmin, admin.TabularInline):
+        model = MyModel
+
+        # You have to set the name of the parent foreign key yourself:
+        fk_name = 'parent'
+
+        # Same as above; '-order' is also allowed here:
+        ordering_field = 'order'
+        # ordering_field_hide_input = False
+
 
 Limitations
 ===========
