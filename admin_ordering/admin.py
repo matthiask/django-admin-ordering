@@ -35,11 +35,15 @@ def get_default_formset_prefix(parent_model, model, fk_name):
 
 class OrderableAdmin(BaseModelAdmin):
     ordering_field = 'ordering'
+    ordering_field_hide_input = False
 
     @property
     def media(self):
         if not isinstance(self, InlineModelAdmin):
-            context = {'field': self.ordering_field}
+            context = {
+                'field': self.ordering_field,
+                'field_hide_input': self.ordering_field_hide_input,
+            }
         else:
             if not self.fk_name:
                 raise ImproperlyConfigured(
@@ -48,6 +52,7 @@ class OrderableAdmin(BaseModelAdmin):
 
             context = {
                 'field': self.ordering_field,
+                'field_hide_input': self.ordering_field_hide_input,
                 'prefix': get_default_formset_prefix(
                     self.parent_model, self.model, self.fk_name),
                 'stacked': isinstance(self, admin.StackedInline),
