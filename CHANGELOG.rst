@@ -6,11 +6,14 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
-The following two changes were contributed by Fabio Caccamo:
+The following changes were contributed by Fabio Caccamo:
 
 - Preserved the placeholder height when dragging starts.
 - Added support for a descending ordering field, e.g. for a priority
   field.
+- Added a handle for reordering items, ghosts of objects when dragging,
+  and generally made the display of placeholders much nicer.
+- Added support for hiding the ordering input field.
 
 
 `0.7.0`_ (2018-01-25)
