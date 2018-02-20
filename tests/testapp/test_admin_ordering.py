@@ -127,5 +127,9 @@ class OrderableAdminTest(TestCase):
         )
         self.assertContains(
             response,
-            'data-context="{&quot;field&quot;: &quot;_orderaaaaa&quot;}"',
+            '&quot;field&quot;: &quot;_orderaaaaa&quot;',
+        )
+        self.assertContains(
+            response,
+            '&quot;field_hide_input&quot;: false',
         )
