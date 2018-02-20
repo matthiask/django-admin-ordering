@@ -42,7 +42,7 @@ class OrderableAdmin(BaseModelAdmin):
         if not isinstance(self, InlineModelAdmin):
             context = {
                 'field': self.ordering_field,
-                'field_hide_input': self.ordering_field_hide_input,
+                'fieldHideInput': self.ordering_field_hide_input,
             }
         else:
             if not self.fk_name:
@@ -52,7 +52,7 @@ class OrderableAdmin(BaseModelAdmin):
 
             context = {
                 'field': self.ordering_field,
-                'field_hide_input': self.ordering_field_hide_input,
+                'fieldHideInput': self.ordering_field_hide_input,
                 'prefix': get_default_formset_prefix(
                     self.parent_model, self.model, self.fk_name),
                 'stacked': isinstance(self, admin.StackedInline),

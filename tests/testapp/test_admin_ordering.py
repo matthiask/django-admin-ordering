@@ -131,5 +131,5 @@ class OrderableAdminTest(TestCase):
         )
         self.assertContains(
             response,
-            '&quot;field_hide_input&quot;: false',
+            '&quot;fieldHideInput&quot;: false',
         )

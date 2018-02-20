@@ -62,7 +62,7 @@ django.jQuery(function($){
             $sortable = $('#' + data.prefix + '-group tbody');
             $sortableHandle = $sortable.find('.field-' + data.field);
             $sortableHandle.addClass('admin-ordering-field');
-            if (data.field_hide_input) {
+            if (data.fieldHideInput) {
                 $sortableHandle.addClass('admin-ordering-field-hide-input');
             }
             $sortableHandle.find('input').wrap($sortableInputWrapper);
@@ -92,7 +92,7 @@ django.jQuery(function($){
             $sortable = $('#' + data.prefix + '-group');
             $sortableHandle = $sortable.find('.field-' + data.field);
             $sortableHandle.addClass('admin-ordering-field');
-            if (data.field_hide_input) {
+            if (data.fieldHideInput) {
                 $sortableHandle.addClass('admin-ordering-field-hide-input');
             }
             $sortableHandle.find('input').wrap($sortableInputWrapper);
@@ -116,7 +116,7 @@ django.jQuery(function($){
             $sortable = $('#result_list tbody');
             $sortableHandle = $sortable.find('.field-' + data.field);
             $sortableHandle.addClass('admin-ordering-field');
-            if (data.field_hide_input) {
+            if (data.fieldHideInput) {
                 $sortableHandle.addClass('admin-ordering-field-hide-input');
             }
             if (!$sortableHandle.find('input').length) {
