@@ -76,7 +76,7 @@ django.jQuery(function($){
                     ui.item.css('height', ui.item.outerHeight());
                 },
                 update: function(event, ui) {
-                    updateOrdering($('.dynamic-' + data.prefix));
+                    updateOrdering($('.has_original.dynamic-' + data.prefix));
                 },
                 stop: function(event, ui){
                     autoHorizontalOverflow();
@@ -104,7 +104,7 @@ django.jQuery(function($){
                     updatePlaceholderHeight(ui);
                 },
                 update: function(event, ui) {
-                    updateOrdering($('.dynamic-' + data.prefix));
+                    updateOrdering($('.has_original.dynamic-' + data.prefix));
                 },
                 stop: function(event, ui){
                     autoHorizontalOverflow();
