@@ -61,6 +61,11 @@ Orderable inlines
         ordering_field = 'order'
         # ordering_field_hide_input = False
 
+``OrderableAdmin`` comes with a default of ``extra = 0`` (no extra
+empty inlines shown by default). It is strongly recommended to leave the
+changed default as-is, because otherwise you'll end up with invalid
+inlines just because you wanted to change the ordering.
+
 
 Limitations
 ===========

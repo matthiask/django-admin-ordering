@@ -36,6 +36,7 @@ def get_default_formset_prefix(parent_model, model, fk_name):
 class OrderableAdmin(BaseModelAdmin):
     ordering_field = 'ordering'
     ordering_field_hide_input = False
+    extra = 0
 
     @property
     def media(self):
