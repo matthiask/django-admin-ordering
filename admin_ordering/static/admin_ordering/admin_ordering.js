@@ -3,17 +3,6 @@
 /* eslint comma-dangle:[2,"never"] */
 django.jQuery(function($){
 
-    function updateOrdering(nodes) {
-        var incOrdering = 10;
-        var maxOrdering = (nodes.length * incOrdering);
-        nodes.each(function(index) {
-            var row = $(this);
-            var rowOrdering = data.fieldDesc ? (maxOrdering - (incOrdering * index)) : (incOrdering * (index + 1));
-            row.find('.field-' + data.field + ' input').val(rowOrdering);
-            row.removeClass('row1 row2').addClass((index % 2) ? 'row2' : 'row1');
-        });
-    }
-
     function updatePlaceholderHeight(ui) {
         // set placeholder height equal to item height
         ui.placeholder.height(ui.item.outerHeight());
@@ -48,7 +37,18 @@ django.jQuery(function($){
 
         var $sortable, $sortableHandle, $sortableInputWrapper = '<span class="admin-ordering-field-input-wrapper"></span>';
 
-        data = JSON.parse(this.getAttribute('data-context'));
+        var data = JSON.parse(this.getAttribute('data-context'));
+
+        function updateOrdering(nodes) {
+            var incOrdering = 10;
+            var maxOrdering = (nodes.length * incOrdering);
+            nodes.each(function(index) {
+                var row = $(this);
+                var rowOrdering = data.fieldDesc ? (maxOrdering - (incOrdering * index)) : (incOrdering * (index + 1));
+                row.find('.field-' + data.field + ' input').val(rowOrdering);
+                row.removeClass('row1 row2').addClass((index % 2) ? 'row2' : 'row1');
+            });
+        }
 
         if (data.field.startsWith('-')) {
             data.field = data.field.substring(1);
@@ -139,14 +139,14 @@ django.jQuery(function($){
 
             enforceSortableRowsCellsSize($sortable);
         }
-    });
 
-    if (data.tabular || data.stacked) {
-        // Yay, Django 1.9 or better!
-        $(document).on('formset:added', function newForm(event, row) {
-            if (row.hasClass('dynamic-' + data.prefix)) {
-                updateOrdering($('.dynamic-' + data.prefix));
-            }
-        });
-    }
+        if (data.tabular || data.stacked) {
+            // Yay, Django 1.9 or better!
+            $(document).on('formset:added', function newForm(event, row) {
+                if (row.hasClass('dynamic-' + data.prefix)) {
+                    updateOrdering($('.dynamic-' + data.prefix));
+                }
+            });
+        }
+    });
 });
