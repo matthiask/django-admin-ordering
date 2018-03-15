@@ -6,6 +6,10 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+- Fixed an accidental global ``data`` value in the JavaScript code.
+- Added a default of ``extra=0`` for avoiding problems with empty but
+  still invalid inlines.
+
 
 `0.8.0`_ (2018-01-25)
 ~~~~~~~~~~~~~~~~~~~~~
