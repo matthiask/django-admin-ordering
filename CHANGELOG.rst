@@ -11,6 +11,7 @@ Change log
   still invalid inlines.
 - Fixed a duplicated handle when using ordering fields with callable
   defaults.
+- Reformatted the code using black.
 
 
 `0.8.0`_ (2018-01-25)

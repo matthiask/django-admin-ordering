@@ -7,7 +7,8 @@ class Parent1(models.Model):
 
 class Child1(models.Model):
     parent = models.ForeignKey(
-        Parent1, related_name='children', on_delete=models.CASCADE)
+        Parent1, related_name="children", on_delete=models.CASCADE
+    )
     ordering = models.IntegerField(default=0)
 
 
@@ -17,7 +18,8 @@ class Parent2(models.Model):
 
 class Child2(models.Model):
     parent = models.ForeignKey(
-        Parent2, related_name='children+', on_delete=models.CASCADE)
+        Parent2, related_name="children+", on_delete=models.CASCADE
+    )
     ordering = models.IntegerField(default=0)
 
 
