@@ -18,34 +18,25 @@ matrix:
     - python: "2.7"
       env: REQ="Django>=1.11,<2.0"
     - python: "3.4"
-      env: REQ="Django>=1.11,<2.0 django-mptt"
+      env: REQ="Django>=1.11,<2.0"
     - python: "3.4"
-      env: REQ="Django>=2.0,<2.1 django-mptt"
+      env: REQ="Django>=2.0,<2.1"
     - python: "3.5"
-      env: REQ="Django>=1.11,<2.0 django-mptt"
+      env: REQ="Django>=1.11,<2.0"
     - python: "3.5"
-      env: REQ="Django>=2.0,<2.1 django-mptt"
+      env: REQ="Django>=2.0,<2.1"
     - python: "3.5"
-      env: REQ="Django>=2.1,<2.2 django-mptt"
+      env: REQ="Django>=2.1,<2.2"
     - python: "3.6"
-      env: REQ="Django>=1.11,<2.0 django-mptt"
+      env: REQ="Django>=1.11,<2.0"
     - python: "3.6"
-      env: REQ="Django>=2.0,<2.1 django-mptt"
+      env: REQ="Django>=2.0,<2.1"
     - python: "3.6"
-      env: REQ="Django>=2.1,<2.2 django-mptt"
+      env: REQ="Django>=2.1,<2.2"
     - python: "3.6"
-      env: REQ="https://github.com/django/django/archive/master.zip django-mptt"
+      env: REQ="https://github.com/django/django/archive/master.zip"
   allow_failures:
-    - env: REQ="https://github.com/django/django/archive/master.zip django-mptt"
+    - env: REQ="https://github.com/django/django/archive/master.zip"
 install:
   - pip install $REQ django-js-asset
 script: cd tests && ./manage.py test testapp && cd ..
-jobs:
-  include:
-    - stage: style
-      env: REQ=none
-      install: skip
-      script:
-        - pip install black flake8
-        - flake8 .
-        - black --check admin_ordering tests
