@@ -9,6 +9,8 @@ Change log
 - Fixed an accidental global ``data`` value in the JavaScript code.
 - Added a default of ``extra=0`` for avoiding problems with empty but
   still invalid inlines.
+- Fixed a duplicated handle when using ordering fields with callable
+  defaults.
 
 
 `0.8.0`_ (2018-01-25)
