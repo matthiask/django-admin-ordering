@@ -6,6 +6,9 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+`0.9.0`_ (2018-08-27)
+~~~~~~~~~~~~~~~~~~~~~
+
 - Fixed an accidental global ``data`` value in the JavaScript code.
 - Added a default of ``extra=0`` for avoiding problems with empty but
   still invalid inlines.
@@ -94,4 +97,5 @@ Initial public version.
 .. _0.6.0: https://github.com/matthiask/django-admin-ordering/compare/0.5.0...0.6.0
 .. _0.7.0: https://github.com/matthiask/django-admin-ordering/compare/0.6.0...0.7.0
 .. _0.8.0: https://github.com/matthiask/django-admin-ordering/compare/0.7.0...0.8.0
-.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.8.0...master
+.. _0.9.0: https://github.com/matthiask/django-admin-ordering/compare/0.8.0...0.9.0
+.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.9.0...master
