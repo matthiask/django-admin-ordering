@@ -13,7 +13,7 @@ from js_asset import JS
 __all__ = ("OrderableAdmin",)
 
 
-def get_default_formset_prefix(parent_model, model, fk_name):
+def get_default_formset_prefix(parent_model, model, fk_name, prefix):
     # Mostly lifted from django/forms/models.py
     try:
         from django.db.models.fields.related import RelatedObject
@@ -30,13 +30,17 @@ def get_default_formset_prefix(parent_model, model, fk_name):
     # Newer versions of Django
     fk = model._meta.get_field(fk_name)
     rel = fk.remote_field if hasattr(fk, "remote_field") else fk.rel
-    return rel.get_accessor_name(model=model).replace("+", "")
+    if not prefix:
+        return rel.get_accessor_name(model=model).replace("+", "")
+    else:
+        return prefix
 
 
 class OrderableAdmin(BaseModelAdmin):
     ordering_field = "ordering"
     ordering_field_hide_input = False
     extra = 0
+    prefix = None
 
     @property
     def media(self):
@@ -56,7 +60,7 @@ class OrderableAdmin(BaseModelAdmin):
                 "field": self.ordering_field,
                 "fieldHideInput": self.ordering_field_hide_input,
                 "prefix": get_default_formset_prefix(
-                    self.parent_model, self.model, self.fk_name
+                    self.parent_model, self.model, self.fk_name, self.prefix
                 ),
                 "stacked": isinstance(self, admin.StackedInline),
                 "tabular": isinstance(self, admin.TabularInline),
