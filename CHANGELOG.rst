@@ -6,6 +6,10 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+- Also reformatted ``setup.py`` using black and updated the Trove
+  identifiers a bit.
+
+
 `0.10.0`_ (2019-01-06)
 ~~~~~~~~~~~~~~~~~~~~~~
 
