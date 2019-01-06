@@ -6,6 +6,9 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+`0.10.0`_ (2019-01-06)
+~~~~~~~~~~~~~~~~~~~~~~
+
 - Added automatic detection of formset's prefixes; now adding more than
   one inline per model is supported and explicitly specifying
   ``fk_name`` is not needed anymore.
@@ -104,5 +107,6 @@ Initial public version.
 .. _0.6.0: https://github.com/matthiask/django-admin-ordering/compare/0.5.0...0.6.0
 .. _0.7.0: https://github.com/matthiask/django-admin-ordering/compare/0.6.0...0.7.0
 .. _0.8.0: https://github.com/matthiask/django-admin-ordering/compare/0.7.0...0.8.0
-.. _0.9.0: https://github.com/matthiask/django-admin-ordering/compare/0.8.0...0.9.0
-.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.9.0...master
+.. _0.9.0: https://github.com/matthiask/django-admin-ordering/compare/0.8.0...0.9
+.. _0.10.0: https://github.com/matthiask/django-admin-ordering/compare/0.9...0.10
+.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.10...master
