@@ -1,11 +1,12 @@
 from __future__ import absolute_import, unicode_literals
 
+import inspect
 import json
 
 from django import forms
 from django.contrib import admin
+from django.contrib.admin.helpers import InlineAdminFormSet
 from django.contrib.admin.options import BaseModelAdmin, InlineModelAdmin
-from django.core.exceptions import ImproperlyConfigured
 
 from js_asset import JS
 
@@ -13,55 +14,34 @@ from js_asset import JS
 __all__ = ("OrderableAdmin",)
 
 
-def get_default_formset_prefix(parent_model, model, fk_name, prefix):
-    # Mostly lifted from django/forms/models.py
-    try:
-        from django.db.models.fields.related import RelatedObject
-
-        return (
-            RelatedObject(parent_model, model, model._meta.get_field(fk_name))
-            .get_accessor_name()
-            .replace("+", "")
-        )
-
-    except ImportError:
-        pass
-
-    # Newer versions of Django
-    fk = model._meta.get_field(fk_name)
-    rel = fk.remote_field if hasattr(fk, "remote_field") else fk.rel
-    if not prefix:
-        return rel.get_accessor_name(model=model).replace("+", "")
-    else:
-        return prefix
-
-
 class OrderableAdmin(BaseModelAdmin):
     ordering_field = "ordering"
     ordering_field_hide_input = False
     extra = 0
-    prefix = None
 
     @property
     def media(self):
         if not isinstance(self, InlineModelAdmin):
+            # Editable change list
             context = {
                 "field": self.ordering_field,
                 "fieldHideInput": self.ordering_field_hide_input,
             }
         else:
-            if not self.fk_name:
-                raise ImproperlyConfigured(
-                    "%r requires a `fk_name` -- we are too dumb/lazy to"
-                    " determine it ourselves. Thanks!" % (self.__class__)
-                )
+            # Find our helper.InlineAdminFormSet so that we may access
+            # the formset instance and its prefix
+            frame = inspect.currentframe()
+            while frame:
+                helper = frame.f_locals.get("self")
+                if isinstance(helper, InlineAdminFormSet):
+                    break
+                frame = frame.f_back
+            del frame
 
             context = {
                 "field": self.ordering_field,
                 "fieldHideInput": self.ordering_field_hide_input,
-                "prefix": get_default_formset_prefix(
-                    self.parent_model, self.model, self.fk_name, self.prefix
-                ),
+                "prefix": helper.formset.prefix,
                 "stacked": isinstance(self, admin.StackedInline),
                 "tabular": isinstance(self, admin.TabularInline),
             }

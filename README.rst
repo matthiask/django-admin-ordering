@@ -54,9 +54,6 @@ Orderable inlines
     class MyModelTabularInline(OrderableAdmin, admin.TabularInline):
         model = MyModel
 
-        # You have to set the name of the parent foreign key yourself:
-        fk_name = 'parent'
-
         # Same as above; '-order' is also allowed here:
         ordering_field = 'order'
         # ordering_field_hide_input = False
