@@ -25,7 +25,12 @@ class Child3Inline(OrderableAdmin, admin.TabularInline):
     ordering_field = "ordering"
 
 
-admin.site.register(models.Parent3, inlines=[Child3Inline])
+class Child3InlineOther(OrderableAdmin, admin.TabularInline):
+    model = models.Child3
+    ordering_field = "ordering"
+
+
+admin.site.register(models.Parent3, inlines=[Child3Inline, Child3InlineOther])
 
 
 class Parent4Admin(OrderableAdmin, admin.ModelAdmin):

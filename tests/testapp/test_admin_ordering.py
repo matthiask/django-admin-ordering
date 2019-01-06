@@ -44,11 +44,12 @@ class OrderableAdminTest(TestCase):
 
         response = self.client.get(reverse("admin:testapp_parent3_add"))
 
-        self.assertContains(response, "/static/admin_ordering/admin_ordering.js", 1)
+        self.assertContains(response, "/static/admin_ordering/admin_ordering.js", 2)
         self.assertContains(response, 'data-context="')
         self.assertContains(response, "&quot;stacked&quot;: false")
         self.assertContains(response, "&quot;tabular&quot;: true")
         self.assertContains(response, "&quot;prefix&quot;: &quot;child3_set&quot;")
+        self.assertContains(response, "&quot;prefix&quot;: &quot;child3_set-2&quot;")
 
     def test_parent4(self):
         self.login()
