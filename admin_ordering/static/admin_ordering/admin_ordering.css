@@ -1,77 +1,86 @@
 .ui-sortable-handle {
-    cursor: auto;
+  cursor: auto;
 }
 
 .ui-sortable-helper {
-    opacity: 0.8;
-    border-top: 1px dashed #CCCCCC;
-    border-bottom: 1px dashed #CCCCCC;
+  opacity: 0.8;
+  border-top: 1px dashed #cccccc;
+  border-bottom: 1px dashed #cccccc;
 }
 
 .ui-sortable-helper > td,
 .ui-sortable-helper > th {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .inline-related.tabular .ui-sortable > tr {
-    padding: 0;
+  padding: 0;
 }
 
 .inline-related.tabular .ui-sortable-placeholder > td {
-    display: none;
+  display: none;
 }
 
 .admin-ordering-field {
-    cursor: row-resize;
-
+  cursor: row-resize;
 }
 
 .admin-ordering-field .admin-ordering-field-input-wrapper {
-    display: table-cell;
-    width: 100%;
-    white-space: nowrap;
+  display: table-cell;
+  width: 100%;
+  white-space: nowrap;
 }
 
 .admin-ordering-field .admin-ordering-field-input-wrapper::before {
-    content: "";
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    background-size: 14px 14px;
-    background-image: url('admin_ordering-icon.svg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    vertical-align: middle;
-    margin-right: 15px;
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-size: 14px 14px;
+  background-image: url("admin_ordering-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  vertical-align: middle;
+  margin-right: 15px;
 }
 
 .admin-ordering-field .admin-ordering-field-input-wrapper input {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
-.admin-ordering-field.admin-ordering-field-hide-input .admin-ordering-field-input-wrapper::before {
-    margin-right: 0;
+.admin-ordering-field.admin-ordering-field-hide-input
+  .admin-ordering-field-input-wrapper::before {
+  margin-right: 0;
 }
 
-.admin-ordering-field.admin-ordering-field-hide-input .admin-ordering-field-input-wrapper input {
-    visibility: hidden;
-    pointer-events: none;
+.admin-ordering-field.admin-ordering-field-hide-input
+  .admin-ordering-field-input-wrapper
+  input {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .inline-related .admin-ordering-field {
-    cursor: auto;
+  cursor: auto;
 }
 
 .inline-related.has_original .admin-ordering-field,
-.inline-related .has_original .admin-ordering-field  {
-    cursor: row-resize;
+.inline-related .has_original .admin-ordering-field {
+  cursor: row-resize;
 }
 
-.inline-related .admin-ordering-field .admin-ordering-field-input-wrapper::before {
-    opacity: 0.3;
+.inline-related
+  .admin-ordering-field
+  .admin-ordering-field-input-wrapper::before {
+  opacity: 0.3;
 }
 
-.inline-related.has_original .admin-ordering-field .admin-ordering-field-input-wrapper::before,
-.inline-related .has_original .admin-ordering-field .admin-ordering-field-input-wrapper::before  {
-    opacity: 1.0;
+.inline-related.has_original
+  .admin-ordering-field
+  .admin-ordering-field-input-wrapper::before,
+.inline-related
+  .has_original
+  .admin-ordering-field
+  .admin-ordering-field-input-wrapper::before {
+  opacity: 1;
 }

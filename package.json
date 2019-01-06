@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "eslint": "^5.10.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "prettier": "^1.15.3"
+  },
+  "scripts": {
+    "prettier": "prettier --write .*js admin_ordering/static/admin_ordering/admin_ordering.*",
+    "eslint": "eslint admin_ordering/static/admin_ordering/"
+  },
+  "eslintIgnore": [
+    "*.min.js"
+  ]
+}

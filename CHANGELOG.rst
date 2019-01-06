@@ -6,6 +6,13 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+- Added automatic detection of formset's prefixes; now adding more than
+  one inline per model is supported and explicitly specifying
+  ``fk_name`` is not needed anymore.
+- Reformatted the frontend code using prettier and added checking by
+  ESLint.
+
+
 `0.9.0`_ (2018-08-27)
 ~~~~~~~~~~~~~~~~~~~~~
 
