@@ -42,7 +42,7 @@ matrix:
         - pip install black flake8
       script:
         - flake8 .
-        - black --check feincms3 tests
+        - black --check admin_ordering tests
   allow_failures:
     - env: REQ="https://github.com/django/django/archive/master.zip#egg=Django"
 install:

@@ -6,12 +6,15 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+`0.11`_ (2019-03-19)
+~~~~~~~~~~~~~~~~~~~~~~
+
 - Also reformatted ``setup.py`` using black and updated the Trove
   identifiers a bit.
 - Added an explicit dependency on ``django.jQuery``.
 
 
-`0.10.0`_ (2019-01-06)
+`0.10`_ (2019-01-06)
 ~~~~~~~~~~~~~~~~~~~~~~
 
 - Added automatic detection of formset's prefixes; now adding more than
@@ -21,7 +24,7 @@ Change log
   ESLint.
 
 
-`0.9.0`_ (2018-08-27)
+`0.9`_ (2018-08-27)
 ~~~~~~~~~~~~~~~~~~~~~
 
 - Fixed an accidental global ``data`` value in the JavaScript code.
@@ -32,7 +35,7 @@ Change log
 - Reformatted the code using black.
 
 
-`0.8.0`_ (2018-01-25)
+`0.8`_ (2018-01-25)
 ~~~~~~~~~~~~~~~~~~~~~
 
 The following changes were contributed by Fabio Caccamo:
@@ -45,7 +48,7 @@ The following changes were contributed by Fabio Caccamo:
 - Added support for hiding the ordering input field.
 
 
-`0.7.0`_ (2018-01-25)
+`0.7`_ (2018-01-25)
 ~~~~~~~~~~~~~~~~~~~~~
 
 - Fixed the package to not install the test suite app when installing
@@ -59,34 +62,34 @@ The following changes were contributed by Fabio Caccamo:
   introduced in Django 2.0.
 
 
-`0.6.0`_ (2017-05-15)
+`0.6`_ (2017-05-15)
 ~~~~~~~~~~~~~~~~~~~~~
 
 - Added Django@master to the test matrix.
 - Reuse django-js-asset_ instead of bundling our own copy.
 
 
-`0.5.0`_ (2016-11-05)
+`0.5`_ (2016-11-05)
 ~~~~~~~~~~~~~~~~~~~~~
 
 - Removed the limitation that only one inline can be orderable per model.
 
 
-`0.4.0`_ (2016-07-15)
+`0.4`_ (2016-07-15)
 ~~~~~~~~~~~~~~~~~~~~~
 
 - Automatically fill in ordering values with inlines when using Django
   1.9 or better.
 
 
-`0.3.0`_ (2016-07-07)
+`0.3`_ (2016-07-07)
 ~~~~~~~~~~~~~~~~~~~~~
 
 - Do not make changelists orderable when there are no matching inputs to
   be filled in.
 
 
-`0.2.0`_ (2016-07-06)
+`0.2`_ (2016-07-06)
 ~~~~~~~~~~~~~~~~~~~~~
 
 - Added a testsuite.
@@ -105,13 +108,14 @@ Initial public version.
 .. _tox: https://tox.readthedocs.io/
 
 .. _0.1.1: https://github.com/matthiask/django-admin-ordering/commit/be8c5581c4
-.. _0.2.0: https://github.com/matthiask/django-admin-ordering/compare/0.1.1...0.2.0
-.. _0.3.0: https://github.com/matthiask/django-admin-ordering/compare/0.2.0...0.3.0
-.. _0.4.0: https://github.com/matthiask/django-admin-ordering/compare/0.3.0...0.4.0
-.. _0.5.0: https://github.com/matthiask/django-admin-ordering/compare/0.4.0...0.5.0
-.. _0.6.0: https://github.com/matthiask/django-admin-ordering/compare/0.5.0...0.6.0
-.. _0.7.0: https://github.com/matthiask/django-admin-ordering/compare/0.6.0...0.7.0
-.. _0.8.0: https://github.com/matthiask/django-admin-ordering/compare/0.7.0...0.8.0
-.. _0.9.0: https://github.com/matthiask/django-admin-ordering/compare/0.8.0...0.9
-.. _0.10.0: https://github.com/matthiask/django-admin-ordering/compare/0.9...0.10
-.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.10...master
+.. _0.2: https://github.com/matthiask/django-admin-ordering/compare/0.1.1...0.2
+.. _0.3: https://github.com/matthiask/django-admin-ordering/compare/0.2...0.3
+.. _0.4: https://github.com/matthiask/django-admin-ordering/compare/0.3...0.4
+.. _0.5: https://github.com/matthiask/django-admin-ordering/compare/0.4...0.5
+.. _0.6: https://github.com/matthiask/django-admin-ordering/compare/0.5...0.6
+.. _0.7: https://github.com/matthiask/django-admin-ordering/compare/0.6...0.7
+.. _0.8: https://github.com/matthiask/django-admin-ordering/compare/0.7...0.8
+.. _0.9: https://github.com/matthiask/django-admin-ordering/compare/0.8...0.9
+.. _0.10: https://github.com/matthiask/django-admin-ordering/compare/0.9...0.10
+.. _0.11: https://github.com/matthiask/django-admin-ordering/compare/0.10...0.11
+.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.11...master
