@@ -8,6 +8,7 @@ Change log
 
 - Also reformatted ``setup.py`` using black and updated the Trove
   identifiers a bit.
+- Added an explicit dependency on ``django.jQuery``.
 
 
 `0.10.0`_ (2019-01-06)
