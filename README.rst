@@ -73,3 +73,7 @@ Limitations
 - ``OrderableAdmin`` can be used both for inlines and parents, but this
   also means that you cannot register a model directly with
   ``OrderableAdmin``.
+ - Using django-admin-ordering with filtered or paginated lists may produce
+   unexpected results. The workaround right now is to set `list_per_page` to
+   a bigger value and not reordering filtered changelists.
+   a bigger value.
