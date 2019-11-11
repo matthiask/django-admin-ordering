@@ -60,7 +60,7 @@ django.jQuery(function($) {
         });
       }
 
-      if (data.field.startsWith("-")) {
+      if (data.field.indexOf("-") == 0) {
         data.field = data.field.substring(1);
         data.fieldDesc = true;
       } else {
