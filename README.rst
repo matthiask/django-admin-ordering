@@ -32,16 +32,16 @@ Orderable change lists
     @admin.register(MyModel)
     class MyModelAdmin(OrderableAdmin, admin.ModelAdmin):
         # The field used for ordering. Prepend a minus for reverse
-        # ordering: '-order'
-        ordering_field = 'order'
+        # ordering: "-order"
+        ordering_field = "order"
 
         # You may optionally hide the ordering field in the changelist:
         # ordering_field_hide_input = False
 
         # The ordering field must be included both in list_display and
         # list_editable:
-        list_display = ('name', 'order', )
-        list_editable = ('order', )
+        list_display = ["name", "order"]
+        list_editable = ["order"]
 
 
 Orderable inlines
@@ -54,8 +54,8 @@ Orderable inlines
     class MyModelTabularInline(OrderableAdmin, admin.TabularInline):
         model = MyModel
 
-        # Same as above; '-order' is also allowed here:
-        ordering_field = 'order'
+        # Same as above; "-order" is also allowed here:
+        ordering_field = "order"
         # ordering_field_hide_input = False
 
 ``OrderableAdmin`` comes with a default of ``extra = 0`` (no extra
@@ -76,4 +76,3 @@ Limitations
  - Using django-admin-ordering with filtered or paginated lists may produce
    unexpected results. The workaround right now is to set `list_per_page` to
    a bigger value and not reordering filtered changelists.
-   a bigger value.
