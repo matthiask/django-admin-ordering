@@ -45,6 +45,7 @@ django.jQuery(function($) {
           '<span class="admin-ordering-field-input-wrapper"></span>';
 
       var data = JSON.parse(this.getAttribute("data-context"));
+      var inputFieldSelector = 'input[name*=' + data.field + ']';
 
       function updateOrdering(nodes) {
         var incOrdering = 10;
@@ -54,7 +55,7 @@ django.jQuery(function($) {
           var rowOrdering = data.fieldDesc
             ? maxOrdering - incOrdering * index
             : incOrdering * (index + 1);
-          row.find(".field-" + data.field + " input").val(rowOrdering);
+          row.find(inputFieldSelector).val(rowOrdering);
           row.removeClass("row1 row2").addClass(index % 2 ? "row2" : "row1");
         });
       }
@@ -74,7 +75,7 @@ django.jQuery(function($) {
           $sortableHandle.addClass("admin-ordering-field-hide-input");
         }
         $sortableHandle
-          .find('input:not([type="hidden"])')
+          .find(inputFieldSelector + ':not([type="hidden"])')
           .wrap($sortableInputWrapper);
         $sortable.sortable({
           items: ">.has_original",
@@ -104,7 +105,7 @@ django.jQuery(function($) {
           $sortableHandle.addClass("admin-ordering-field-hide-input");
         }
         $sortableHandle
-          .find('input:not([type="hidden"])')
+          .find(inputFieldSelector + ':not([type="hidden"])')
           .wrap($sortableInputWrapper);
         $sortable.sortable({
           items: ">.has_original,>>.has_original",
@@ -131,7 +132,7 @@ django.jQuery(function($) {
           return;
         }
         $sortableHandle
-          .find('input:not([type="hidden"])')
+          .find(inputFieldSelector + ':not([type="hidden"])')
           .wrap($sortableInputWrapper);
         $sortable.sortable({
           handle: $sortableHandle,
