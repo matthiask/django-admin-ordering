@@ -6,6 +6,9 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+`0.12`_ (2019-11-18)
+~~~~~~~~~~~~~~~~~~~~
+
 - Added a notice to the README that using django-admin-ordering with
   filtered and/or paginated changelists may produce unexpected results.
 - Checked compatibility with Django 2.2 and 3.0.
@@ -13,7 +16,7 @@ Change log
 
 
 `0.11`_ (2019-03-19)
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
 
 - Also reformatted ``setup.py`` using black and updated the Trove
   identifiers a bit.
@@ -21,7 +24,7 @@ Change log
 
 
 `0.10`_ (2019-01-06)
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
 
 - Added automatic detection of formset's prefixes; now adding more than
   one inline per model is supported and explicitly specifying
@@ -31,7 +34,7 @@ Change log
 
 
 `0.9`_ (2018-08-27)
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 - Fixed an accidental global ``data`` value in the JavaScript code.
 - Added a default of ``extra=0`` for avoiding problems with empty but
@@ -42,7 +45,7 @@ Change log
 
 
 `0.8`_ (2018-01-25)
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 The following changes were contributed by Fabio Caccamo:
 
@@ -55,7 +58,7 @@ The following changes were contributed by Fabio Caccamo:
 
 
 `0.7`_ (2018-01-25)
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 - Fixed the package to not install the test suite app when installing
   using pip. Thanks to Melvyn Sopacua for the contribution!
@@ -69,34 +72,34 @@ The following changes were contributed by Fabio Caccamo:
 
 
 `0.6`_ (2017-05-15)
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 - Added Django@master to the test matrix.
 - Reuse django-js-asset_ instead of bundling our own copy.
 
 
 `0.5`_ (2016-11-05)
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 - Removed the limitation that only one inline can be orderable per model.
 
 
 `0.4`_ (2016-07-15)
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 - Automatically fill in ordering values with inlines when using Django
   1.9 or better.
 
 
 `0.3`_ (2016-07-07)
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 - Do not make changelists orderable when there are no matching inputs to
   be filled in.
 
 
 `0.2`_ (2016-07-06)
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 - Added a testsuite.
 
@@ -124,4 +127,5 @@ Initial public version.
 .. _0.9: https://github.com/matthiask/django-admin-ordering/compare/0.8...0.9
 .. _0.10: https://github.com/matthiask/django-admin-ordering/compare/0.9...0.10
 .. _0.11: https://github.com/matthiask/django-admin-ordering/compare/0.10...0.11
-.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.11...master
+.. _0.12: https://github.com/matthiask/django-admin-ordering/compare/0.11...0.12
+.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.12...master

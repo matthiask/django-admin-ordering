@@ -45,7 +45,7 @@ Orderable change lists
 
 
 Orderable inlines
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
 ::
 
@@ -67,12 +67,13 @@ inlines just because you wanted to change the ordering.
 Limitations
 ===========
 
-- Starting with Django 1.9 newly created inlines are automatically assigned
-  a good ordering value. Earlier versions do not support the required
-  ``formset:added`` signal.
+- Starting with Django 1.9 newly created inlines are automatically
+  assigned a good ordering value. Earlier versions do not support the
+  required ``formset:added`` signal.
 - ``OrderableAdmin`` can be used both for inlines and parents, but this
   also means that you cannot register a model directly with
   ``OrderableAdmin``.
- - Using django-admin-ordering with filtered or paginated lists may produce
-   unexpected results. The workaround right now is to set `list_per_page` to
-   a bigger value and not reordering filtered changelists.
+- Using django-admin-ordering with filtered or paginated lists may
+  produce unexpected results. The workaround right now is to set
+  `list_per_page` to a bigger value and not reordering filtered
+  changelists.
