@@ -6,6 +6,12 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+- Added a notice to the README that using django-admin-ordering with
+  filtered and/or paginated changelists may produce unexpected results.
+- Checked compatibility with Django 2.2 and 3.0.
+- Made the ordering field selector more specific to avoid an edge case.
+
+
 `0.11`_ (2019-03-19)
 ~~~~~~~~~~~~~~~~~~~~~~
 
