@@ -45,7 +45,7 @@ django.jQuery(function($) {
           '<span class="admin-ordering-field-input-wrapper"></span>';
 
       var data = JSON.parse(this.getAttribute("data-context"));
-      var inputFieldSelector = "input[name*=" + data.field + "]";
+      var inputFieldSelector = 'input[name$="-' + data.field + '"]';
 
       function updateOrdering(nodes) {
         var incOrdering = 10;
