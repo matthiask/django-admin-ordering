@@ -77,3 +77,6 @@ Limitations
   produce unexpected results. The workaround right now is to set
   `list_per_page` to a bigger value and not reordering filtered
   changelists.
+- Note that django-admin-ordering assigns ordering values in increments
+  of 10, emphasizing that the ordering value should not have any
+  significance apart from giving relative ordering to elements.
