@@ -6,6 +6,9 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+- Added Django 3.1 and Python 3.8 to the matrix.
+
+
 `0.12`_ (2019-11-18)
 ~~~~~~~~~~~~~~~~~~~~
 
