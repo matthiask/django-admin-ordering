@@ -1,5 +1,5 @@
 /* global django */
-django.jQuery(function($) {
+django.jQuery(function ($) {
   function updatePlaceholderHeight(ui) {
     // set placeholder height equal to item height
     ui.placeholder.height(ui.item.outerHeight());
@@ -17,19 +17,19 @@ django.jQuery(function($) {
 
   function enforceSortableRowsCellsSize(node) {
     // enforce row cells size while sorting rows
-    node.find(">tr").each(function() {
+    node.find(">tr").each(function () {
       $(this)
-        .mousedown(function() {
+        .mousedown(function () {
           $(this)
             .find("td, th")
-            .each(function() {
+            .each(function () {
               $(this).css("width", $(this).width());
             });
         })
-        .mouseup(function() {
+        .mouseup(function () {
           $(this)
             .find("td, th")
-            .each(function() {
+            .each(function () {
               $(this).css("width", "auto");
             });
         });
@@ -38,7 +38,7 @@ django.jQuery(function($) {
 
   $(".admin-ordering-context:not(.activated)")
     .addClass("activated")
-    .each(function() {
+    .each(function () {
       var $sortable,
         $sortableHandle,
         $sortableInputWrapper =
@@ -50,7 +50,7 @@ django.jQuery(function($) {
       function updateOrdering(nodes) {
         var incOrdering = 10;
         var maxOrdering = nodes.length * incOrdering;
-        nodes.each(function(index) {
+        nodes.each(function (index) {
           var row = $(this);
           var rowOrdering = data.fieldDesc
             ? maxOrdering - incOrdering * index
@@ -80,20 +80,20 @@ django.jQuery(function($) {
         $sortable.sortable({
           items: ">.has_original",
           handle: $sortableHandle,
-          start: function(_event, ui) {
+          start: function (_event, ui) {
             hideHorizontalOverflow();
             updatePlaceholderHeight(ui);
             // fix ui item height
             ui.item.css("height", ui.item.outerHeight());
           },
-          update: function(_event, _ui) {
+          update: function (_event, _ui) {
             updateOrdering($(".dynamic-" + data.prefix));
           },
-          stop: function(_event, ui) {
+          stop: function (_event, ui) {
             autoHorizontalOverflow();
             // reset ui item height
             ui.item.css("height", "auto");
-          }
+          },
         });
 
         enforceSortableRowsCellsSize($sortable);
@@ -110,16 +110,16 @@ django.jQuery(function($) {
         $sortable.sortable({
           items: ">.has_original,>>.has_original",
           handle: $sortableHandle,
-          start: function(_event, ui) {
+          start: function (_event, ui) {
             hideHorizontalOverflow();
             updatePlaceholderHeight(ui);
           },
-          update: function(_event, _ui) {
+          update: function (_event, _ui) {
             updateOrdering($(".dynamic-" + data.prefix));
           },
-          stop: function(_event, _ui) {
+          stop: function (_event, _ui) {
             autoHorizontalOverflow();
-          }
+          },
         });
       } else {
         $sortable = $("#result_list tbody");
@@ -136,16 +136,16 @@ django.jQuery(function($) {
           .wrap($sortableInputWrapper);
         $sortable.sortable({
           handle: $sortableHandle,
-          start: function(_event, ui) {
+          start: function (_event, ui) {
             hideHorizontalOverflow();
             updatePlaceholderHeight(ui);
           },
-          update: function(_event, _ui) {
+          update: function (_event, _ui) {
             updateOrdering($sortable.find("tr"));
           },
-          stop: function(_event, _ui) {
+          stop: function (_event, _ui) {
             autoHorizontalOverflow();
-          }
+          },
         });
 
         enforceSortableRowsCellsSize($sortable);
