@@ -74,7 +74,7 @@ Limitations
   also means that you cannot register a model directly with
   ``OrderableAdmin``.
 - Using django-admin-ordering with filtered or paginated lists may
-  produce unexpected results. The workaround right now is to set
+  produce unexpected results. The recommendation right now is to set
   `list_per_page` to a bigger value and not reordering filtered
   changelists.
 - Note that django-admin-ordering assigns ordering values in increments
