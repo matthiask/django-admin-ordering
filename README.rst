@@ -25,7 +25,7 @@ First, you need a model ordered by an integer field.
 Orderable change lists
 ~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: python
 
     from admin_ordering.admin import OrderableAdmin
 
@@ -47,7 +47,7 @@ Orderable change lists
 Orderable inlines
 ~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: python
 
     from admin_ordering.admin import OrderableAdmin
 
