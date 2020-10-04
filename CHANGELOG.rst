@@ -8,6 +8,7 @@ Change log
 
 - Specified the default ordering by ``["ordering"]`` in the
   ``OrderableModel``.
+- Started adding translations.
 
 
 `0.13`_ (2020-10-04)
