@@ -31,7 +31,7 @@ class OrderableAdmin(BaseModelAdmin):
             # Find our helper.InlineAdminFormSet so that we may access
             # the formset instance and its prefix
             frame = inspect.currentframe()
-            while frame:
+            while frame:  # pragma: no branch
                 helper = frame.f_locals.get("self")
                 if isinstance(helper, InlineAdminFormSet):
                     break
