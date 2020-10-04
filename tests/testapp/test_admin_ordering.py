@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib.auth.models import User
 from django.test import TestCase
 
+from testapp.models import Orderable
 
 try:
     from django.urls import reverse
@@ -65,3 +66,14 @@ class OrderableAdminTest(TestCase):
         self.assertNotContains(response, "&quot;prefix&quot;: ")
         self.assertContains(response, "&quot;field&quot;: &quot;_orderaaaaa&quot;")
         self.assertContains(response, "&quot;fieldHideInput&quot;: false")
+
+    def test_orderable_model(self):
+        obj = Orderable.objects.create()
+        self.assertEqual(obj.ordering, 10)
+
+        obj = Orderable.objects.create()
+        self.assertEqual(obj.ordering, 20)
+
+        Orderable.objects.create(ordering=42)
+        obj = Orderable.objects.create()
+        self.assertEqual(obj.ordering, 52)

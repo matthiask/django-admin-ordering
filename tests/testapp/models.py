@@ -1,5 +1,7 @@
 from django.db import models
 
+from admin_ordering.models import OrderableModel
+
 
 class Parent1(models.Model):
     title = models.CharField(max_length=100)
@@ -35,3 +37,7 @@ class Child3(models.Model):
 class Parent4(models.Model):
     title = models.CharField(max_length=100)
     _orderaaaaa = models.IntegerField(default=0)
+
+
+class Orderable(OrderableModel):
+    pass
