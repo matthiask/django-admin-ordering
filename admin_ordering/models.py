@@ -8,6 +8,7 @@ class OrderableModel(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ["ordering"]
 
     def save(self, *args, **kwargs):
         if not self.ordering:

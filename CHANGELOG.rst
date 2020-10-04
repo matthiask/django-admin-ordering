@@ -6,6 +6,9 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+- Specified the default ordering by ``["ordering"]`` in the
+  ``OrderableModel``.
+
 
 `0.13`_ (2020-10-04)
 ~~~~~~~~~~~~~~~~~~~~
