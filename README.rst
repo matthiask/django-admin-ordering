@@ -19,7 +19,11 @@ Installation
 Usage
 =====
 
-First, you need a model ordered by an integer field.
+First, you need a model ordered by an integer field. If you are happy
+with a model where 1. the ordering field is called ``ordering`` and 2.
+the ordering field is automatically initialized so that new objects are
+ordered last you can also inherit the abstract
+``admin_ordering.models.OrderableModel`` model.
 
 
 Orderable change lists

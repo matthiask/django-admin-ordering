@@ -6,7 +6,12 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+
+`0.13`_ (2020-10-04)
+~~~~~~~~~~~~~~~~~~~~
+
 - Added Django 3.1 and Python 3.8 to the matrix.
+- Added an abstract ``admin_ordering.models.OrderableModel`` model.
 
 
 `0.12`_ (2019-11-18)
@@ -131,4 +136,5 @@ Initial public version.
 .. _0.10: https://github.com/matthiask/django-admin-ordering/compare/0.9...0.10
 .. _0.11: https://github.com/matthiask/django-admin-ordering/compare/0.10...0.11
 .. _0.12: https://github.com/matthiask/django-admin-ordering/compare/0.11...0.12
-.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.12...master
+.. _0.13: https://github.com/matthiask/django-admin-ordering/compare/0.12...0.13
+.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.13...master

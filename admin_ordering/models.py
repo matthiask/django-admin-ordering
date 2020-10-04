@@ -13,6 +13,6 @@ class OrderableModel(models.Model):
         if not self.ordering:
             max = self.__class__._default_manager.aggregate(m=Max("ordering"))["m"]
             self.ordering = 10 + (max or 0)
-        super().save(*args, **kwargs)
+        super(OrderableModel, self).save(*args, **kwargs)
 
     save.alters_data = True
