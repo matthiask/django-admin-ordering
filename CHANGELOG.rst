@@ -9,6 +9,8 @@ Change log
 - Specified the default ordering by ``["ordering"]`` in the
   ``OrderableModel``.
 - Started adding translations.
+- Switched to a declarative setup.
+- Switched from Travis CI to GitHub actions.
 
 
 `0.13`_ (2020-10-04)

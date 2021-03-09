@@ -7,7 +7,6 @@ from django import forms
 from django.contrib import admin
 from django.contrib.admin.helpers import InlineAdminFormSet
 from django.contrib.admin.options import BaseModelAdmin, InlineModelAdmin
-
 from js_asset import JS
 
 
