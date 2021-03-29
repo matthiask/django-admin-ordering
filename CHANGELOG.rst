@@ -6,6 +6,10 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+
+`0.14`_ (2021-03-29)
+~~~~~~~~~~~~~~~~~~~~
+
 - Specified the default ordering by ``["ordering"]`` in the
   ``OrderableModel``.
 - Started adding translations.
@@ -145,4 +149,5 @@ Initial public version.
 .. _0.11: https://github.com/matthiask/django-admin-ordering/compare/0.10...0.11
 .. _0.12: https://github.com/matthiask/django-admin-ordering/compare/0.11...0.12
 .. _0.13: https://github.com/matthiask/django-admin-ordering/compare/0.12...0.13
-.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.13...master
+.. _0.14: https://github.com/matthiask/django-admin-ordering/compare/0.13...0.14
+.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.14...main
