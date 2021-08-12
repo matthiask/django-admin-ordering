@@ -6,6 +6,8 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+- Updated the bundled jQuery UI library to 1.12.1.
+
 
 `0.14`_ (2021-03-29)
 ~~~~~~~~~~~~~~~~~~~~

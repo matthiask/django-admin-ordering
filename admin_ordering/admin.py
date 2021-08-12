@@ -46,10 +46,15 @@ class OrderableAdmin(BaseModelAdmin):
             }
 
         return super(OrderableAdmin, self).media + forms.Media(
-            css={"all": ("admin_ordering/admin_ordering.css",)},
+            css={
+                "all": [
+                    "admin_ordering/jquery-ui.min.css",
+                    "admin_ordering/admin_ordering.css",
+                ]
+            },
             js=[
                 "admin/js/jquery.init.js",
-                "admin_ordering/jquery-ui-1.11.4.custom.min.js",
+                "admin_ordering/jquery-ui.min.js",
                 JS(
                     "admin_ordering/admin_ordering.js",
                     {
