@@ -7,6 +7,8 @@ Change log
 ~~~~~~~~~~~~~~~
 
 - Updated the bundled jQuery UI library to 1.12.1.
+- Added a system check which verifies that ``admin_ordering`` is added to
+  ``INSTALLED_APPS``.
 
 
 `0.14`_ (2021-03-29)

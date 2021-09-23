@@ -4,9 +4,11 @@ import inspect
 import json
 
 from django import forms
+from django.conf import settings
 from django.contrib import admin
 from django.contrib.admin.helpers import InlineAdminFormSet
 from django.contrib.admin.options import BaseModelAdmin, InlineModelAdmin
+from django.core import checks
 from js_asset import JS
 
 
@@ -64,3 +66,15 @@ class OrderableAdmin(BaseModelAdmin):
                 ),
             ],
         )
+
+    def check(self, **kwargs):
+        errors = super(OrderableAdmin, self).check(**kwargs)
+        if "admin_ordering" not in settings.INSTALLED_APPS:
+            errors.append(
+                checks.Error(
+                    '"admin_ordering" must be in INSTALLED_APPS.',
+                    obj=self.__class__,
+                    id="admin_ordering.E001",
+                )
+            )
+        return errors
