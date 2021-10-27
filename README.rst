@@ -24,7 +24,19 @@ First, you need a model ordered by an integer field. If you are happy
 with a model where 1. the ordering field is called ``ordering`` and 2.
 the ordering field is automatically initialized so that new objects are
 ordered last you can also inherit the abstract
-``admin_ordering.models.OrderableModel`` model.
+``admin_ordering.models.OrderableModel`` model. If you define your own ``class
+Meta`` you should inherit ``OrderableModel.Meta`` so that the ``ordering``
+attribute is set to the correct value:
+
+.. code-block:: python
+
+    from admin_ordering.models import OrderableModel
+
+    class MyModel(OrderableModel):
+        # ...
+
+        class Meta(OrderableModel):
+            # ...
 
 
 Orderable change lists
