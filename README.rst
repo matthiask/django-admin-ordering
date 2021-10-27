@@ -2,12 +2,12 @@
 django-admin-ordering -- Orderable change lists and inlines done right^Wsimple
 ==============================================================================
 
-.. image:: https://github.com/matthiask/django-admin-ordering/actions/workflows/test.yml/badge.svg
+.. image:: https://github.com/matthiask/django-admin-ordering/actions/workflows/tests.yml/badge.svg
     :target: https://github.com/matthiask/django-admin-ordering/
     :alt: CI Status
 
-Please refer to the Travis CI build linked above for the currently
-supported combinations of Python and Django.
+Please refer to the CI build linked above for the currently supported
+combinations of Python and Django.
 
 
 Installation
