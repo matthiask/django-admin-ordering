@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import inspect
 import json
 
@@ -47,7 +45,7 @@ class OrderableAdmin(BaseModelAdmin):
                 "tabular": isinstance(self, admin.TabularInline),
             }
 
-        return super(OrderableAdmin, self).media + forms.Media(
+        return super().media + forms.Media(
             css={
                 "all": [
                     "admin_ordering/jquery-ui.min.css",
@@ -68,7 +66,7 @@ class OrderableAdmin(BaseModelAdmin):
         )
 
     def check(self, **kwargs):
-        errors = super(OrderableAdmin, self).check(**kwargs)
+        errors = super().check(**kwargs)
         if "admin_ordering" not in settings.INSTALLED_APPS:
             errors.append(
                 checks.Error(
