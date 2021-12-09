@@ -10,6 +10,8 @@ Change log
 - Added a system check which verifies that ``admin_ordering`` is added to
   ``INSTALLED_APPS``.
 - Added system checks for the ordering attribute of models.
+- Added pre-commit.
+- Raised the minimum version of Python to 3.8, Django to 3.2.
 
 
 `0.14`_ (2021-03-29)

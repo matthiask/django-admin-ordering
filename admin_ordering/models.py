@@ -36,7 +36,7 @@ class OrderableModel(models.Model):
                     'The ordering of "%s" is undefined.' % cls._meta.label,
                     obj=cls,
                     id="admin_ordering.E002",
-                    hint='Make the inner Meta class inherit OrderableModel.Meta.',
+                    hint="Make the inner Meta class inherit OrderableModel.Meta.",
                 )
             )
         elif cls._meta.ordering[0] != "ordering":
@@ -45,7 +45,7 @@ class OrderableModel(models.Model):
                     '"%s" isn\'t ordered by the ordering field.' % cls._meta.label,
                     obj=cls,
                     id="admin_ordering.W003",
-                    hint='Make the inner Meta class inherit OrderableModel.Meta.',
+                    hint="Make the inner Meta class inherit OrderableModel.Meta.",
                 )
             )
         return errors

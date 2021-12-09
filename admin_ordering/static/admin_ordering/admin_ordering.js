@@ -2,17 +2,17 @@
 django.jQuery(function ($) {
   function updatePlaceholderHeight(ui) {
     // set placeholder height equal to item height
-    ui.placeholder.height(ui.item.outerHeight());
+    ui.placeholder.height(ui.item.outerHeight())
   }
 
   function hideHorizontalOverflow() {
     // hide body horizontal overflow while dragging row
-    $("body").css("overflow-x", "hidden");
+    $("body").css("overflow-x", "hidden")
   }
 
   function autoHorizontalOverflow() {
     // reset body horizontal overflow
-    $("body").css("overflow-x", "auto");
+    $("body").css("overflow-x", "auto")
   }
 
   function enforceSortableRowsCellsSize(node) {
@@ -23,17 +23,17 @@ django.jQuery(function ($) {
           $(this)
             .find("td, th")
             .each(function () {
-              $(this).css("width", $(this).width());
-            });
+              $(this).css("width", $(this).width())
+            })
         })
         .mouseup(function () {
           $(this)
             .find("td, th")
             .each(function () {
-              $(this).css("width", "auto");
-            });
-        });
-    });
+              $(this).css("width", "auto")
+            })
+        })
+    })
   }
 
   $(".admin-ordering-context:not(.activated)")
@@ -42,122 +42,122 @@ django.jQuery(function ($) {
       var $sortable,
         $sortableHandle,
         $sortableInputWrapper =
-          '<span class="admin-ordering-field-input-wrapper"></span>';
+          '<span class="admin-ordering-field-input-wrapper"></span>'
 
-      var data = JSON.parse(this.getAttribute("data-context"));
-      var inputFieldSelector = 'input[name$="-' + data.field + '"]';
+      var data = JSON.parse(this.getAttribute("data-context"))
+      var inputFieldSelector = 'input[name$="-' + data.field + '"]'
 
       function updateOrdering(nodes) {
-        var incOrdering = 10;
-        var maxOrdering = nodes.length * incOrdering;
+        var incOrdering = 10
+        var maxOrdering = nodes.length * incOrdering
         nodes.each(function (index) {
-          var row = $(this);
+          var row = $(this)
           var rowOrdering = data.fieldDesc
             ? maxOrdering - incOrdering * index
-            : incOrdering * (index + 1);
-          row.find(inputFieldSelector).val(rowOrdering);
-          row.removeClass("row1 row2").addClass(index % 2 ? "row2" : "row1");
-        });
+            : incOrdering * (index + 1)
+          row.find(inputFieldSelector).val(rowOrdering)
+          row.removeClass("row1 row2").addClass(index % 2 ? "row2" : "row1")
+        })
       }
 
       if (data.field.indexOf("-") == 0) {
-        data.field = data.field.substring(1);
-        data.fieldDesc = true;
+        data.field = data.field.substring(1)
+        data.fieldDesc = true
       } else {
-        data.fieldDesc = false;
+        data.fieldDesc = false
       }
 
       if (data.tabular) {
-        $sortable = $("#" + data.prefix + "-group tbody");
-        $sortableHandle = $sortable.find(".field-" + data.field);
-        $sortableHandle.addClass("admin-ordering-field");
+        $sortable = $("#" + data.prefix + "-group tbody")
+        $sortableHandle = $sortable.find(".field-" + data.field)
+        $sortableHandle.addClass("admin-ordering-field")
         if (data.fieldHideInput) {
-          $sortableHandle.addClass("admin-ordering-field-hide-input");
+          $sortableHandle.addClass("admin-ordering-field-hide-input")
         }
         $sortableHandle
           .find(inputFieldSelector + ':not([type="hidden"])')
-          .wrap($sortableInputWrapper);
+          .wrap($sortableInputWrapper)
         $sortable.sortable({
           items: ">.has_original",
           handle: $sortableHandle,
           start: function (_event, ui) {
-            hideHorizontalOverflow();
-            updatePlaceholderHeight(ui);
+            hideHorizontalOverflow()
+            updatePlaceholderHeight(ui)
             // fix ui item height
-            ui.item.css("height", ui.item.outerHeight());
+            ui.item.css("height", ui.item.outerHeight())
           },
           update: function (_event, _ui) {
-            updateOrdering($(".dynamic-" + data.prefix));
+            updateOrdering($(".dynamic-" + data.prefix))
           },
           stop: function (_event, ui) {
-            autoHorizontalOverflow();
+            autoHorizontalOverflow()
             // reset ui item height
-            ui.item.css("height", "auto");
+            ui.item.css("height", "auto")
           },
-        });
+        })
 
-        enforceSortableRowsCellsSize($sortable);
+        enforceSortableRowsCellsSize($sortable)
       } else if (data.stacked) {
-        $sortable = $("#" + data.prefix + "-group");
-        $sortableHandle = $sortable.find(".field-" + data.field);
-        $sortableHandle.addClass("admin-ordering-field");
+        $sortable = $("#" + data.prefix + "-group")
+        $sortableHandle = $sortable.find(".field-" + data.field)
+        $sortableHandle.addClass("admin-ordering-field")
         if (data.fieldHideInput) {
-          $sortableHandle.addClass("admin-ordering-field-hide-input");
+          $sortableHandle.addClass("admin-ordering-field-hide-input")
         }
         $sortableHandle
           .find(inputFieldSelector + ':not([type="hidden"])')
-          .wrap($sortableInputWrapper);
+          .wrap($sortableInputWrapper)
         $sortable.sortable({
           items: ">.has_original,>>.has_original",
           handle: $sortableHandle,
           start: function (_event, ui) {
-            hideHorizontalOverflow();
-            updatePlaceholderHeight(ui);
+            hideHorizontalOverflow()
+            updatePlaceholderHeight(ui)
           },
           update: function (_event, _ui) {
-            updateOrdering($(".dynamic-" + data.prefix));
+            updateOrdering($(".dynamic-" + data.prefix))
           },
           stop: function (_event, _ui) {
-            autoHorizontalOverflow();
+            autoHorizontalOverflow()
           },
-        });
+        })
       } else {
-        $sortable = $("#result_list tbody");
-        $sortableHandle = $sortable.find(".field-" + data.field);
-        $sortableHandle.addClass("admin-ordering-field");
+        $sortable = $("#result_list tbody")
+        $sortableHandle = $sortable.find(".field-" + data.field)
+        $sortableHandle.addClass("admin-ordering-field")
         if (data.fieldHideInput) {
-          $sortableHandle.addClass("admin-ordering-field-hide-input");
+          $sortableHandle.addClass("admin-ordering-field-hide-input")
         }
         if (!$sortableHandle.find("input").length) {
-          return;
+          return
         }
         $sortableHandle
           .find(inputFieldSelector + ':not([type="hidden"])')
-          .wrap($sortableInputWrapper);
+          .wrap($sortableInputWrapper)
         $sortable.sortable({
           handle: $sortableHandle,
           start: function (_event, ui) {
-            hideHorizontalOverflow();
-            updatePlaceholderHeight(ui);
+            hideHorizontalOverflow()
+            updatePlaceholderHeight(ui)
           },
           update: function (_event, _ui) {
-            updateOrdering($sortable.find("tr"));
+            updateOrdering($sortable.find("tr"))
           },
           stop: function (_event, _ui) {
-            autoHorizontalOverflow();
+            autoHorizontalOverflow()
           },
-        });
+        })
 
-        enforceSortableRowsCellsSize($sortable);
+        enforceSortableRowsCellsSize($sortable)
       }
 
       if (data.tabular || data.stacked) {
         // Yay, Django 1.9 or better!
         $(document).on("formset:added", function newForm(event, row) {
           if (row.hasClass("dynamic-" + data.prefix)) {
-            updateOrdering($(".dynamic-" + data.prefix));
+            updateOrdering($(".dynamic-" + data.prefix))
           }
-        });
+        })
       }
-    });
-});
+    })
+})
