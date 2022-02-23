@@ -12,6 +12,7 @@ Change log
 - Added system checks for the ordering attribute of models.
 - Added pre-commit.
 - Raised the minimum version of Python to 3.8, Django to 3.2.
+- Changed the ``formset:added`` handler for compatibility with Django 4.1.
 
 
 `0.14`_ (2021-03-29)

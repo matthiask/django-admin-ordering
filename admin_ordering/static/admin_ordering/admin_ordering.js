@@ -153,9 +153,16 @@ django.jQuery(function ($) {
 
       if (data.tabular || data.stacked) {
         // Yay, Django 1.9 or better!
-        $(document).on("formset:added", function newForm(event, row) {
-          if (row.hasClass("dynamic-" + data.prefix)) {
-            updateOrdering($(".dynamic-" + data.prefix))
+        $(document).on("formset:added", function newForm(event, $row) {
+          if (event.detail && event.detail.formsetName) {
+            // Django 4.1 or better!
+            if ($(event.target).hasClass("dynamic-" + data.prefix)) {
+              updateOrdering($(".dynamic-" + data.prefix))
+            }
+          } else {
+            if ($row.hasClass("dynamic-" + data.prefix)) {
+              updateOrdering($(".dynamic-" + data.prefix))
+            }
           }
         })
       }
