@@ -6,6 +6,14 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.15...main
+
+
+`0.15`_ (2022-02-25)
+~~~~~~~~~~~~~~~~~~~~
+
+.. _0.15: https://github.com/matthiask/django-admin-ordering/compare/0.14...0.15
+
 - Updated the bundled jQuery UI library to 1.12.1.
 - Added a system check which verifies that ``admin_ordering`` is added to
   ``INSTALLED_APPS``.
@@ -17,6 +25,8 @@ Change log
 
 `0.14`_ (2021-03-29)
 ~~~~~~~~~~~~~~~~~~~~
+
+.. _0.14: https://github.com/matthiask/django-admin-ordering/compare/0.13...0.14
 
 - Specified the default ordering by ``["ordering"]`` in the
   ``OrderableModel``.
@@ -157,5 +167,3 @@ Initial public version.
 .. _0.11: https://github.com/matthiask/django-admin-ordering/compare/0.10...0.11
 .. _0.12: https://github.com/matthiask/django-admin-ordering/compare/0.11...0.12
 .. _0.13: https://github.com/matthiask/django-admin-ordering/compare/0.12...0.13
-.. _0.14: https://github.com/matthiask/django-admin-ordering/compare/0.13...0.14
-.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.14...main
