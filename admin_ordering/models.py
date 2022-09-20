@@ -39,7 +39,7 @@ class OrderableModel(models.Model):
                     hint="Make the inner Meta class inherit OrderableModel.Meta.",
                 )
             )
-        elif cls._meta.ordering[0] != "ordering":
+        elif cls._meta.ordering[0] not in {"ordering", "-ordering"}:
             errors.append(
                 checks.Warning(
                     '"%s" isn\'t ordered by the ordering field.' % cls._meta.label,
