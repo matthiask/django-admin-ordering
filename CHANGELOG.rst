@@ -9,6 +9,7 @@ Change log
 .. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.15...main
 
 - Stopped warning when ``ordering = ["-ordering"]``.
+- Added Django 4.1.
 
 
 `0.15`_ (2022-02-25)
