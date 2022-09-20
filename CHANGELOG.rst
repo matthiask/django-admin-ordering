@@ -10,6 +10,8 @@ Change log
 
 - Stopped warning when ``ordering = ["-ordering"]``.
 - Added Django 4.1.
+- Raised the minimum version of django-js-asset to 2.0 for better compatibility
+  with new Django versions.
 
 
 `0.15`_ (2022-02-25)
