@@ -45,6 +45,13 @@ django.jQuery(function ($) {
           '<span class="admin-ordering-field-input-wrapper"></span>'
 
       var data = JSON.parse(this.getAttribute("data-context"))
+      if (data.field.indexOf("-") == 0) {
+        data.field = data.field.substring(1)
+        data.fieldDesc = true
+      } else {
+        data.fieldDesc = false
+      }
+
       var inputFieldSelector = 'input[name$="-' + data.field + '"]'
 
       function updateOrdering(nodes) {
@@ -58,13 +65,6 @@ django.jQuery(function ($) {
           row.find(inputFieldSelector).val(rowOrdering)
           row.removeClass("row1 row2").addClass(index % 2 ? "row2" : "row1")
         })
-      }
-
-      if (data.field.indexOf("-") == 0) {
-        data.field = data.field.substring(1)
-        data.fieldDesc = true
-      } else {
-        data.fieldDesc = false
       }
 
       if (data.tabular) {
