@@ -6,11 +6,6 @@ module.exports = {
     node: true,
   },
   extends: ["eslint:recommended", "prettier"],
-  globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly",
-    __API_HOST: "readonly",
-  },
   parserOptions: {
     ecmaFeatures: {
       experimentalObjectRestSpread: true,
