@@ -6,7 +6,13 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
-.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.16...main
+.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.17...main
+
+
+`0.17`_ (2023-05-05)
+~~~~~~~~~~~~~~~~~~~~
+
+.. _0.17: https://github.com/matthiask/django-admin-ordering/compare/0.16...0.17
 
 - Fixed descending orderings.
 - Added Django 4.2.
