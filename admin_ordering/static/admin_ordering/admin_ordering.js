@@ -15,27 +15,6 @@ django.jQuery(function ($) {
     $("body").css("overflow-x", "auto")
   }
 
-  function enforceSortableRowsCellsSize(node) {
-    // enforce row cells size while sorting rows
-    node.find(">tr").each(function () {
-      $(this)
-        .mousedown(function () {
-          $(this)
-            .find("td, th")
-            .each(function () {
-              $(this).css("width", $(this).width())
-            })
-        })
-        .mouseup(function () {
-          $(this)
-            .find("td, th")
-            .each(function () {
-              $(this).css("width", "auto")
-            })
-        })
-    })
-  }
-
   $(".admin-ordering-context:not(.activated)")
     .addClass("activated")
     .each(function () {
@@ -96,8 +75,6 @@ django.jQuery(function ($) {
             ui.item.css("height", "auto")
           },
         })
-
-        enforceSortableRowsCellsSize($sortable)
       } else if (data.stacked) {
         $sortable = $("#" + data.prefix + "-group")
         $sortableHandle = $sortable.find(".field-" + data.field)
@@ -148,8 +125,6 @@ django.jQuery(function ($) {
             autoHorizontalOverflow()
           },
         })
-
-        enforceSortableRowsCellsSize($sortable)
       }
 
       if (data.tabular || data.stacked) {

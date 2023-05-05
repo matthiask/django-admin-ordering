@@ -11,6 +11,11 @@ Change log
 - Fixed descending orderings.
 - Added Django 4.2.
 - Updated the bundled jQuery UI version.
+- Changed the CSS and JavaScript to fix the handle selection. Do not mark the
+  whole row as draggable. (This was never intentional.)
+- Removed the ``mouseup`` and ``mousedown`` handler which fixed the width of
+  cells during dragging. It seems to break file inputs inside sortables in
+  Firefox. Breaking is worse than a potentially worse UI.
 
 
 `0.16`_ (2022-09-20)
