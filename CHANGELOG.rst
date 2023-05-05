@@ -10,6 +10,7 @@ Change log
 
 - Fixed descending orderings.
 - Added Django 4.2.
+- Updated the bundled jQuery UI version.
 
 
 `0.16`_ (2022-09-20)
