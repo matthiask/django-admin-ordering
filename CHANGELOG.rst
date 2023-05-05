@@ -9,6 +9,7 @@ Change log
 .. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.16...main
 
 - Fixed descending orderings.
+- Added Django 4.2.
 
 
 `0.16`_ (2022-09-20)
