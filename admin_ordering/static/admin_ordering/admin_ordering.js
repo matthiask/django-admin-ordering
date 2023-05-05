@@ -42,7 +42,8 @@ django.jQuery(function ($) {
       var $sortable,
         $sortableHandle,
         $sortableInputWrapper =
-          '<span class="admin-ordering-field-input-wrapper"></span>'
+          '<span class="admin-ordering-field-input-wrapper"></span>',
+        $sortableHandleSelector = ".admin-ordering-field-input-wrapper"
 
       var data = JSON.parse(this.getAttribute("data-context"))
       if (data.field.indexOf("-") == 0) {
@@ -79,7 +80,7 @@ django.jQuery(function ($) {
           .wrap($sortableInputWrapper)
         $sortable.sortable({
           items: ">.has_original",
-          handle: $sortableHandle,
+          handle: $sortableHandleSelector,
           start: function (_event, ui) {
             hideHorizontalOverflow()
             updatePlaceholderHeight(ui)
@@ -109,7 +110,7 @@ django.jQuery(function ($) {
           .wrap($sortableInputWrapper)
         $sortable.sortable({
           items: ">.has_original,>>.has_original",
-          handle: $sortableHandle,
+          handle: $sortableHandleSelector,
           start: function (_event, ui) {
             hideHorizontalOverflow()
             updatePlaceholderHeight(ui)
@@ -135,7 +136,7 @@ django.jQuery(function ($) {
           .find(inputFieldSelector + ':not([type="hidden"])')
           .wrap($sortableInputWrapper)
         $sortable.sortable({
-          handle: $sortableHandle,
+          handle: $sortableHandleSelector,
           start: function (_event, ui) {
             hideHorizontalOverflow()
             updatePlaceholderHeight(ui)

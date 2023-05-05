@@ -21,7 +21,7 @@
   display: none;
 }
 
-.admin-ordering-field {
+.admin-ordering-field-input-wrapper {
   cursor: row-resize;
 }
 
@@ -64,8 +64,8 @@
   cursor: auto;
 }
 
-.inline-related.has_original .admin-ordering-field,
-.inline-related .has_original .admin-ordering-field {
+.inline-related.has_original .admin-ordering-field-input-wrapper,
+.inline-related .has_original .admin-ordering-field-input-wrapper {
   cursor: row-resize;
 }
 
