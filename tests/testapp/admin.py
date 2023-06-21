@@ -1,7 +1,7 @@
 from django.contrib import admin
-from testapp import models
 
 from admin_ordering.admin import OrderableAdmin
+from testapp import models
 
 
 class Child1Inline(OrderableAdmin, admin.TabularInline):

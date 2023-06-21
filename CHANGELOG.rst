@@ -7,6 +7,7 @@ Next version
 ~~~~~~~~~~~~
 
 - Added Python 3.11.
+- Switched to hatchling and ruff.
 
 
 `0.17`_ (2023-05-05)
