@@ -3,10 +3,10 @@
 Change log
 ==========
 
-`Next version`_
-~~~~~~~~~~~~~~~
+Next version
+~~~~~~~~~~~~
 
-.. _Next version: https://github.com/matthiask/django-admin-ordering/compare/0.17...main
+- Added Python 3.11.
 
 
 `0.17`_ (2023-05-05)
