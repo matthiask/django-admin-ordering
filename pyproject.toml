@@ -43,6 +43,9 @@ tests = [
 [project.urls]
 Homepage = "https://github.com/matthiask/django-admin-ordering/"
 
+[tool.hatch.build]
+include = ["admin_ordering/"]
+
 [tool.hatch.version]
 path = "admin_ordering/__init__.py"
 
