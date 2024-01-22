@@ -6,7 +6,7 @@ Change log
 Next version
 ~~~~~~~~~~~~
 
-- Added Python 3.11.
+- Added Python 3.11, 3.12 and Django 5.0.
 - Switched to hatchling and ruff.
 
 
