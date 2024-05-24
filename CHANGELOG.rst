@@ -6,6 +6,11 @@ Change log
 Next version
 ~~~~~~~~~~~~
 
+`0.18`_ (2024-05-24)
+~~~~~~~~~~~~~~~~~~~~
+
+.. _0.18: https://github.com/matthiask/django-admin-ordering/compare/0.17...0.18
+
 - Added Python 3.11, 3.12 and Django 5.0.
 - Switched to hatchling and ruff.
 - Added a database index to the ordering field.
