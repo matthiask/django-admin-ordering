@@ -8,7 +8,7 @@ from django.utils.translation import gettext_lazy as _
 
 @total_ordering
 class OrderableModel(models.Model):
-    ordering = models.PositiveIntegerField(_("ordering"), default=0)
+    ordering = models.PositiveIntegerField(_("ordering"), default=0, db_index=True)
 
     class Meta:
         abstract = True

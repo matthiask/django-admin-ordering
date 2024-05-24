@@ -8,6 +8,7 @@ Next version
 
 - Added Python 3.11, 3.12 and Django 5.0.
 - Switched to hatchling and ruff.
+- Added a database index to the ordering field.
 
 
 `0.17`_ (2023-05-05)
