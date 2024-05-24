@@ -33,7 +33,7 @@ class OrderableModel(models.Model):
         if not cls._meta.ordering:
             errors.append(
                 checks.Error(
-                    'The ordering of "%s" is undefined.' % cls._meta.label,
+                    f'The ordering of "{cls._meta.label}" is undefined.',
                     obj=cls,
                     id="admin_ordering.E002",
                     hint="Make the inner Meta class inherit OrderableModel.Meta.",
@@ -42,7 +42,7 @@ class OrderableModel(models.Model):
         elif cls._meta.ordering[0] not in {"ordering", "-ordering"}:
             errors.append(
                 checks.Warning(
-                    '"%s" isn\'t ordered by the ordering field.' % cls._meta.label,
+                    f'"{cls._meta.label}" isn\'t ordered by the ordering field.',
                     obj=cls,
                     id="admin_ordering.W003",
                     hint="Make the inner Meta class inherit OrderableModel.Meta.",
