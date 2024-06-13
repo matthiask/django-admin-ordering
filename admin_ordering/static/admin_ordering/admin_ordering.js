@@ -1,5 +1,5 @@
 /* global django */
-django.jQuery(function ($) {
+django.jQuery(($) => {
   function updatePlaceholderHeight(ui) {
     // set placeholder height equal to item height
     ui.placeholder.height(ui.item.outerHeight())
@@ -18,28 +18,28 @@ django.jQuery(function ($) {
   $(".admin-ordering-context:not(.activated)")
     .addClass("activated")
     .each(function () {
-      var $sortable,
-        $sortableHandle,
-        $sortableInputWrapper =
-          '<span class="admin-ordering-field-input-wrapper"></span>',
-        $sortableHandleSelector = ".admin-ordering-field-input-wrapper"
+      let $sortable
+      let $sortableHandle
+      const $sortableInputWrapper =
+        '<span class="admin-ordering-field-input-wrapper"></span>'
+      const $sortableHandleSelector = ".admin-ordering-field-input-wrapper"
 
-      var data = JSON.parse(this.getAttribute("data-context"))
-      if (data.field.indexOf("-") == 0) {
+      const data = JSON.parse(this.getAttribute("data-context"))
+      if (data.field.indexOf("-") === 0) {
         data.field = data.field.substring(1)
         data.fieldDesc = true
       } else {
         data.fieldDesc = false
       }
 
-      var inputFieldSelector = 'input[name$="-' + data.field + '"]'
+      const inputFieldSelector = `input[name$="-${data.field}"]`
 
       function updateOrdering(nodes) {
-        var incOrdering = 10
-        var maxOrdering = nodes.length * incOrdering
+        const incOrdering = 10
+        const maxOrdering = nodes.length * incOrdering
         nodes.each(function (index) {
-          var row = $(this)
-          var rowOrdering = data.fieldDesc
+          const row = $(this)
+          const rowOrdering = data.fieldDesc
             ? maxOrdering - incOrdering * index
             : incOrdering * (index + 1)
           row.find(inputFieldSelector).val(rowOrdering)
@@ -48,60 +48,60 @@ django.jQuery(function ($) {
       }
 
       if (data.tabular) {
-        $sortable = $("#" + data.prefix + "-group tbody")
-        $sortableHandle = $sortable.find(".field-" + data.field)
+        $sortable = $(`#${data.prefix}-group tbody`)
+        $sortableHandle = $sortable.find(`.field-${data.field}`)
         $sortableHandle.addClass("admin-ordering-field")
         if (data.fieldHideInput) {
           $sortableHandle.addClass("admin-ordering-field-hide-input")
         }
         $sortableHandle
-          .find(inputFieldSelector + ':not([type="hidden"])')
+          .find(`${inputFieldSelector}:not([type="hidden"])`)
           .wrap($sortableInputWrapper)
         $sortable.sortable({
           items: ">.has_original",
           handle: $sortableHandleSelector,
-          start: function (_event, ui) {
+          start: (_event, ui) => {
             hideHorizontalOverflow()
             updatePlaceholderHeight(ui)
             // fix ui item height
             ui.item.css("height", ui.item.outerHeight())
           },
-          update: function (_event, _ui) {
-            updateOrdering($(".dynamic-" + data.prefix))
+          update: (_event, _ui) => {
+            updateOrdering($(`.dynamic-${data.prefix}`))
           },
-          stop: function (_event, ui) {
+          stop: (_event, ui) => {
             autoHorizontalOverflow()
             // reset ui item height
             ui.item.css("height", "auto")
           },
         })
       } else if (data.stacked) {
-        $sortable = $("#" + data.prefix + "-group")
-        $sortableHandle = $sortable.find(".field-" + data.field)
+        $sortable = $(`#${data.prefix}-group`)
+        $sortableHandle = $sortable.find(`.field-${data.field}`)
         $sortableHandle.addClass("admin-ordering-field")
         if (data.fieldHideInput) {
           $sortableHandle.addClass("admin-ordering-field-hide-input")
         }
         $sortableHandle
-          .find(inputFieldSelector + ':not([type="hidden"])')
+          .find(`${inputFieldSelector}:not([type="hidden"])`)
           .wrap($sortableInputWrapper)
         $sortable.sortable({
           items: ">.has_original,>>.has_original",
           handle: $sortableHandleSelector,
-          start: function (_event, ui) {
+          start: (_event, ui) => {
             hideHorizontalOverflow()
             updatePlaceholderHeight(ui)
           },
-          update: function (_event, _ui) {
-            updateOrdering($(".dynamic-" + data.prefix))
+          update: (_event, _ui) => {
+            updateOrdering($(`.dynamic-${data.prefix}`))
           },
-          stop: function (_event, _ui) {
+          stop: (_event, _ui) => {
             autoHorizontalOverflow()
           },
         })
       } else {
         $sortable = $("#result_list tbody")
-        $sortableHandle = $sortable.find(".field-" + data.field)
+        $sortableHandle = $sortable.find(`.field-${data.field}`)
         $sortableHandle.addClass("admin-ordering-field")
         if (data.fieldHideInput) {
           $sortableHandle.addClass("admin-ordering-field-hide-input")
@@ -110,34 +110,33 @@ django.jQuery(function ($) {
           return
         }
         $sortableHandle
-          .find(inputFieldSelector + ':not([type="hidden"])')
+          .find(`${inputFieldSelector}:not([type="hidden"])`)
           .wrap($sortableInputWrapper)
         $sortable.sortable({
           handle: $sortableHandleSelector,
-          start: function (_event, ui) {
+          start: (_event, ui) => {
             hideHorizontalOverflow()
             updatePlaceholderHeight(ui)
           },
-          update: function (_event, _ui) {
+          update: (_event, _ui) => {
             updateOrdering($sortable.find("tr"))
           },
-          stop: function (_event, _ui) {
+          stop: (_event, _ui) => {
             autoHorizontalOverflow()
           },
         })
       }
 
       if (data.tabular || data.stacked) {
-        // Yay, Django 1.9 or better!
         $(document).on("formset:added", function newForm(event, $row) {
-          if (event.detail && event.detail.formsetName) {
+          if (event.detail?.formsetName) {
             // Django 4.1 or better!
-            if ($(event.target).hasClass("dynamic-" + data.prefix)) {
-              updateOrdering($(".dynamic-" + data.prefix))
+            if ($(event.target).hasClass(`dynamic-${data.prefix}`)) {
+              updateOrdering($(`.dynamic-${data.prefix}`))
             }
           } else {
-            if ($row.hasClass("dynamic-" + data.prefix)) {
-              updateOrdering($(".dynamic-" + data.prefix))
+            if ($row.hasClass(`dynamic-${data.prefix}`)) {
+              updateOrdering($(`.dynamic-${data.prefix}`))
             }
           }
         })
