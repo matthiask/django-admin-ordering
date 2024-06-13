@@ -35,7 +35,7 @@ attribute is set to the correct value:
     class MyModel(OrderableModel):
         # ...
 
-        class Meta(OrderableModel):
+        class Meta(OrderableModel.Meta):
             # ...
 
 
@@ -49,16 +49,16 @@ Orderable change lists
     @admin.register(MyModel)
     class MyModelAdmin(OrderableAdmin, admin.ModelAdmin):
         # The field used for ordering. Prepend a minus for reverse
-        # ordering: "-order"
-        ordering_field = "order"
+        # ordering: "-ordering"
+        ordering_field = "ordering"  # The default.
 
         # You may optionally hide the ordering field in the changelist:
         # ordering_field_hide_input = False
 
         # The ordering field must be included both in list_display and
         # list_editable:
-        list_display = ["name", "order"]
-        list_editable = ["order"]
+        list_display = ["name", "ordering"]
+        list_editable = ["ordering"]
 
 
 Orderable inlines
@@ -71,8 +71,8 @@ Orderable inlines
     class MyModelTabularInline(OrderableAdmin, admin.TabularInline):
         model = MyModel
 
-        # Same as above; "-order" is also allowed here:
-        ordering_field = "order"
+        # Same as above; "-ordering" is also allowed here:
+        ordering_field = "ordering"
         # ordering_field_hide_input = False
 
 ``OrderableAdmin`` comes with a default of ``extra = 0`` (no extra
