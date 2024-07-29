@@ -75,4 +75,14 @@ class OrderableAdmin(BaseModelAdmin):
                     id="admin_ordering.E001",
                 )
             )
+        ordering = self.model._meta.ordering
+        if list(ordering) != [self.ordering_field]:
+            errors.append(
+                checks.Warning(
+                    f"The ordering of {self.model._meta.label} is {ordering}, but {self.__class__.__name__} uses {self.ordering_field!r}. This is inconsistent and potentially broken.",
+                    obj=self.__class__,
+                    id="admin_ordering.W004",
+                    hint="Check that ordering_field is set if you're using a descending ordering.",
+                )
+            )
         return errors
