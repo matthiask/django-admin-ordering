@@ -6,6 +6,11 @@ Change log
 Next version
 ~~~~~~~~~~~~
 
+- Dropped Python 3.8, 3.9 from the CI.
+- Dropped Django 4.1 from the CI.
+- Added Django 5.1 to the CI.
+
+
 `0.18`_ (2024-05-24)
 ~~~~~~~~~~~~~~~~~~~~
 
