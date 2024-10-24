@@ -6,9 +6,17 @@ Change log
 Next version
 ~~~~~~~~~~~~
 
+
+0.19 (2024-10-24)
+~~~~~~~~~~~~~~~~~
+
+- Added support for automatically renumbering the objects on page load. Add
+  ``ordering_field_renumber_on_load = True`` to your model or inline admin
+  definition to opt into this behavior.
 - Dropped Python 3.8, 3.9 from the CI.
 - Dropped Django 4.1 from the CI.
 - Added Django 5.1 to the CI.
+- Added Python 3.13.
 
 
 `0.18`_ (2024-05-24)
