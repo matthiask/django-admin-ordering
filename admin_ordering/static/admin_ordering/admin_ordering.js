@@ -140,6 +140,12 @@ django.jQuery(($) => {
             }
           }
         })
+
+        if (data.renumberOnLoad) {
+          updateOrdering($(`.dynamic-${data.prefix}`))
+        }
+      } else if (data.renumberOnLoad) {
+        updateOrdering($sortable.find("tr"))
       }
     })
 })

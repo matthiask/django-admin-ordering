@@ -16,6 +16,7 @@ __all__ = ("OrderableAdmin",)
 class OrderableAdmin(BaseModelAdmin):
     ordering_field = "ordering"
     ordering_field_hide_input = False
+    ordering_field_renumber_on_load = False
     extra = 0
 
     @property
@@ -25,6 +26,7 @@ class OrderableAdmin(BaseModelAdmin):
             context = {
                 "field": self.ordering_field,
                 "fieldHideInput": self.ordering_field_hide_input,
+                "renumberOnLoad": self.ordering_field_renumber_on_load,
             }
         else:
             # Find our helper.InlineAdminFormSet so that we may access
@@ -40,6 +42,7 @@ class OrderableAdmin(BaseModelAdmin):
             context = {
                 "field": self.ordering_field,
                 "fieldHideInput": self.ordering_field_hide_input,
+                "renumberOnLoad": self.ordering_field_renumber_on_load,
                 "prefix": helper.formset.prefix,
                 "stacked": isinstance(self, admin.StackedInline),
                 "tabular": isinstance(self, admin.TabularInline),

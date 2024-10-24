@@ -50,10 +50,16 @@ Orderable change lists
     class MyModelAdmin(OrderableAdmin, admin.ModelAdmin):
         # The field used for ordering. Prepend a minus for reverse
         # ordering: "-ordering"
-        ordering_field = "ordering"  # The default.
+        # Doesn't have to be provided as long as you're using the default.
+        # ordering_field = "ordering"
 
         # You may optionally hide the ordering field in the changelist:
         # ordering_field_hide_input = False
+
+        # The ordering field can optionally be automatically renumbered when
+        # the page loads. This may be useful if you have existing data which
+        # isn't ordered yet.
+        # ordering_field_renumber_on_load = False
 
         # The ordering field must be included both in list_display and
         # list_editable:
@@ -72,8 +78,9 @@ Orderable inlines
         model = MyModel
 
         # Same as above; "-ordering" is also allowed here:
-        ordering_field = "ordering"
+        # ordering_field = "ordering"
         # ordering_field_hide_input = False
+        # ordering_field_renumber_on_load = False
 
 ``OrderableAdmin`` comes with a default of ``extra = 0`` (no extra
 empty inlines shown by default). It is strongly recommended to leave the
