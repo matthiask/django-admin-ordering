@@ -6,6 +6,8 @@ Change log
 Next version
 ~~~~~~~~~~~~
 
+- Added french translations. Thanks to Foucauld Degeorges!
+
 
 0.19 (2024-10-24)
 ~~~~~~~~~~~~~~~~~
