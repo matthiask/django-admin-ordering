@@ -1,5 +1,9 @@
 /* global django */
 django.jQuery(($) => {
+  const $sortableInputWrapper =
+  '<span class="admin-ordering-field-input-wrapper"></span>'
+  const $sortableHandleSelector = ".admin-ordering-field-input-wrapper"
+
   function updatePlaceholderHeight(ui) {
     // set placeholder height equal to item height
     ui.placeholder.height(ui.item.outerHeight())
@@ -15,14 +19,59 @@ django.jQuery(($) => {
     $("body").css("overflow-x", "auto")
   }
 
+  function setupSortableHandle($sortable, inputFieldSelector, rowsSelector, data, updateOrdering) {
+    $sortableHandle = $sortable.find(`.field-${data.field}`)
+    if (!$sortableHandle.find("input").length) {
+      return $sortableHandle
+    }
+
+    $sortableHandle.addClass("admin-ordering-field")
+    if (data.fieldHideInput) {
+      $sortableHandle.addClass("admin-ordering-field-hide-input")
+    }
+
+    const $input = $sortableHandle.find(`${inputFieldSelector}:not([type="hidden"])`)
+    $input.wrap($sortableInputWrapper)
+
+    if (data.fieldTopDownArrows) {
+      const $buttons = $('<span class="admin-ordering-field-up-down-buttons" />')
+      const $upButton = $('<a class="admin-ordering-field-up-button" />')
+      $upButton.click(function () {
+        const $button = $(this)
+        const $parentRow = $button.closest(rowsSelector)
+        const $previousRow = $parentRow.prev(rowsSelector)
+        if ($previousRow.length) {
+          $parentRow.insertBefore($previousRow)
+          updateOrdering($(rowsSelector))
+        }
+      })
+
+      const $downButton = $('<a class="admin-ordering-field-down-button" />')
+      $downButton.click(function () {
+        const $button = $(this)
+        const $parentRow = $button.closest(rowsSelector)
+        const $nextRow = $parentRow.next(rowsSelector)
+        if ($nextRow.length) {
+          $parentRow.insertAfter($nextRow)
+          setTimeout(() => {
+            updateOrdering($(rowsSelector))
+          }, 0)
+        }
+      })
+
+      $buttons.append($upButton)
+      $buttons.append($downButton)
+      $input.before($buttons)
+    }
+
+    return $sortableHandle
+  }
+
   $(".admin-ordering-context:not(.activated)")
     .addClass("activated")
     .each(function () {
       let $sortable
       let $sortableHandle
-      const $sortableInputWrapper =
-        '<span class="admin-ordering-field-input-wrapper"></span>'
-      const $sortableHandleSelector = ".admin-ordering-field-input-wrapper"
 
       const data = JSON.parse(this.getAttribute("data-context"))
       if (data.field.indexOf("-") === 0) {
@@ -49,14 +98,9 @@ django.jQuery(($) => {
 
       if (data.tabular) {
         $sortable = $(`#${data.prefix}-group tbody`)
-        $sortableHandle = $sortable.find(`.field-${data.field}`)
-        $sortableHandle.addClass("admin-ordering-field")
-        if (data.fieldHideInput) {
-          $sortableHandle.addClass("admin-ordering-field-hide-input")
-        }
-        $sortableHandle
-          .find(`${inputFieldSelector}:not([type="hidden"])`)
-          .wrap($sortableInputWrapper)
+        const rowsSelector = `.dynamic-${data.prefix}`
+        $sortableHandle = setupSortableHandle($sortable, inputFieldSelector, rowsSelector, data, updateOrdering)
+
         $sortable.sortable({
           items: ">.has_original",
           handle: $sortableHandleSelector,
@@ -67,7 +111,7 @@ django.jQuery(($) => {
             ui.item.css("height", ui.item.outerHeight())
           },
           update: (_event, _ui) => {
-            updateOrdering($(`.dynamic-${data.prefix}`))
+            updateOrdering($(rowsSelector))
           },
           stop: (_event, ui) => {
             autoHorizontalOverflow()
@@ -77,14 +121,9 @@ django.jQuery(($) => {
         })
       } else if (data.stacked) {
         $sortable = $(`#${data.prefix}-group`)
-        $sortableHandle = $sortable.find(`.field-${data.field}`)
-        $sortableHandle.addClass("admin-ordering-field")
-        if (data.fieldHideInput) {
-          $sortableHandle.addClass("admin-ordering-field-hide-input")
-        }
-        $sortableHandle
-          .find(`${inputFieldSelector}:not([type="hidden"])`)
-          .wrap($sortableInputWrapper)
+        const rowsSelector = `.dynamic-${data.prefix}`
+        $sortableHandle = setupSortableHandle($sortable, inputFieldSelector, rowsSelector, data, updateOrdering)
+
         $sortable.sortable({
           items: ">.has_original,>>.has_original",
           handle: $sortableHandleSelector,
@@ -93,7 +132,7 @@ django.jQuery(($) => {
             updatePlaceholderHeight(ui)
           },
           update: (_event, _ui) => {
-            updateOrdering($(`.dynamic-${data.prefix}`))
+            updateOrdering($(rowsSelector))
           },
           stop: (_event, _ui) => {
             autoHorizontalOverflow()
@@ -101,17 +140,9 @@ django.jQuery(($) => {
         })
       } else {
         $sortable = $("#result_list tbody")
-        $sortableHandle = $sortable.find(`.field-${data.field}`)
-        $sortableHandle.addClass("admin-ordering-field")
-        if (data.fieldHideInput) {
-          $sortableHandle.addClass("admin-ordering-field-hide-input")
-        }
-        if (!$sortableHandle.find("input").length) {
-          return
-        }
-        $sortableHandle
-          .find(`${inputFieldSelector}:not([type="hidden"])`)
-          .wrap($sortableInputWrapper)
+        const rowsSelector = "#result_list tbody tr"
+        $sortableHandle = setupSortableHandle($sortable, inputFieldSelector, rowsSelector, data, updateOrdering)
+
         $sortable.sortable({
           handle: $sortableHandleSelector,
           start: (_event, ui) => {
@@ -119,7 +150,7 @@ django.jQuery(($) => {
             updatePlaceholderHeight(ui)
           },
           update: (_event, _ui) => {
-            updateOrdering($sortable.find("tr"))
+            updateOrdering($(rowsSelector))
           },
           stop: (_event, _ui) => {
             autoHorizontalOverflow()

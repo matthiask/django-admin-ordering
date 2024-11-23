@@ -84,3 +84,38 @@
   .admin-ordering-field-input-wrapper::before {
   opacity: 1;
 }
+
+.admin-ordering-field-up-down-buttons {
+  display: inline-flex;
+  flex-direction: column;
+  width: 14px;
+  height: 20px;
+  margin-right: 15px;
+  vertical-align: middle;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.admin-ordering-field-up-button, .admin-ordering-field-down-button {
+  height: 0;
+  width: 0;
+}
+
+.admin-ordering-field-up-button {
+  /* CSS triangle */
+  border-right : 7px solid transparent;
+  border-bottom : 7px solid #CCCCCC;
+  border-left : 7px solid transparent;
+}
+
+.admin-ordering-field-down-button {
+  /* CSS triangle */
+  border-right : 7px solid transparent;
+  border-top : 7px solid #CCCCCC;
+  border-left : 7px solid transparent;
+}
+
+.admin-ordering-field-up-button:hover, .admin-ordering-field-down-button:hover {
+  border-top-color: #999;
+  border-bottom-color: #999;
+}
