@@ -10,14 +10,17 @@ class Parent1(models.Model):
         return self.title
 
 
-class Child1(models.Model):
+class Child1(OrderableModel):
     parent = models.ForeignKey(
         Parent1, related_name="children", on_delete=models.CASCADE
     )
-    ordering = models.IntegerField(default=0)
+
+    class Meta(OrderableModel.Meta):
+        ordering = ["ordering"]
 
     def __str__(self):
-        return self.title
+        return str(self.pk)
+
 
 
 class Parent2(models.Model):
@@ -34,7 +37,7 @@ class Child2(models.Model):
     ordering = models.IntegerField(default=0)
 
     def __str__(self):
-        return ""
+        return str(self.pk)
 
 
 class Parent3(models.Model):
@@ -49,12 +52,15 @@ class Child3(models.Model):
     ordering = models.IntegerField(default=0)
 
     def __str__(self):
-        return ""
+        return str(self.pk)
 
 
 class Parent4(models.Model):
     title = models.CharField(max_length=100)
     _orderaaaaa = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ["_orderaaaaa"]
 
     def __str__(self):
         return self.title

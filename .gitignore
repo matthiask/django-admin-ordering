@@ -18,3 +18,4 @@ htmlcov
 venv
 .tox
 node_modules
+tests/testapp/db.sqlite3
