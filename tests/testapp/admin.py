@@ -38,5 +38,7 @@ class Parent4Admin(OrderableAdmin, admin.ModelAdmin):
     list_editable = ("_orderaaaaa",)
     ordering_field = "_orderaaaaa"
 
+    ordering_field_top_down_arrows = True
+
 
 admin.site.register(models.Parent4, Parent4Admin)
