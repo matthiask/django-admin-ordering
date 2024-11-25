@@ -29,6 +29,9 @@
   display: table-cell;
   width: 100%;
   white-space: nowrap;
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
 
 .admin-ordering-field .admin-ordering-field-input-wrapper::before {
@@ -40,17 +43,10 @@
   background-image: url("admin_ordering-icon.svg");
   background-repeat: no-repeat;
   background-position: center center;
-  vertical-align: middle;
-  margin-right: 15px;
 }
 
 .admin-ordering-field .admin-ordering-field-input-wrapper input {
   margin-bottom: 0;
-}
-
-.admin-ordering-field.admin-ordering-field-hide-input
-  .admin-ordering-field-input-wrapper::before {
-  margin-right: 0;
 }
 
 .admin-ordering-field.admin-ordering-field-hide-input
@@ -90,7 +86,6 @@
   flex-direction: column;
   width: 14px;
   height: 20px;
-  margin-right: 15px;
   vertical-align: middle;
   gap: 6px;
   cursor: pointer;
