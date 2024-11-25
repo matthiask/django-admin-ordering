@@ -3,7 +3,12 @@ import os
 
 BASEDIR = os.path.dirname(__file__)
 
-DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3",'NAME': os.path.join(BASEDIR, "db.sqlite3")}}
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASEDIR, "db.sqlite3"),
+    }
+}
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 INSTALLED_APPS = [

@@ -22,7 +22,6 @@ class Child1(OrderableModel):
         return str(self.pk)
 
 
-
 class Parent2(models.Model):
     title = models.CharField(max_length=100)
 

@@ -33,7 +33,7 @@ django.jQuery(($) => {
     const $input = $sortableHandle.find(`${inputFieldSelector}:not([type="hidden"])`)
     $input.wrap($sortableInputWrapper)
 
-    if (data.fieldTopDownArrows) {
+    if (data.fieldUpDownArrows) {
       const $buttons = $('<span class="admin-ordering-field-up-down-buttons" />')
       const $upButton = $('<a class="admin-ordering-field-up-button" />')
       $upButton.click(function () {

@@ -4,8 +4,8 @@
 
 .ui-sortable-helper {
   opacity: 0.8;
-  border-top: 1px dashed #cccccc;
-  border-bottom: 1px dashed #cccccc;
+  border-top: 1px dashed var(--border-color);
+  border-bottom: 1px dashed var(--border-color);
 }
 
 .ui-sortable-helper > td,
