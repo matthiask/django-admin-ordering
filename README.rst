@@ -56,6 +56,9 @@ Orderable change lists
         # You may optionally hide the ordering field in the changelist:
         # ordering_field_hide_input = False
 
+        # You may optionally add up/down arrows to reorder by click instead of dragging:
+        # ordering_field_up_down_arrows = True
+
         # The ordering field can optionally be automatically renumbered when
         # the page loads. This may be useful if you have existing data which
         # isn't ordered yet.
@@ -80,6 +83,7 @@ Orderable inlines
         # Same as above; "-ordering" is also allowed here:
         # ordering_field = "ordering"
         # ordering_field_hide_input = False
+        # ordering_field_up_down_arrows = False
         # ordering_field_renumber_on_load = False
 
 ``OrderableAdmin`` comes with a default of ``extra = 0`` (no extra
