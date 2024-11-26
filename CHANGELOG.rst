@@ -6,7 +6,12 @@ Change log
 Next version
 ~~~~~~~~~~~~
 
+0.20 (2024-11-26)
+~~~~~~~~~~~~~~~~~
+
 - Added french translations. Thanks to Foucauld Degeorges!
+- Added a new option to reorder items by clicking instead of dragging. Thanks
+  to Foucauld Degeorges!
 
 
 0.19 (2024-10-24)
