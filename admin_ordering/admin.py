@@ -7,7 +7,7 @@ from django.contrib import admin
 from django.contrib.admin.helpers import InlineAdminFormSet
 from django.contrib.admin.options import BaseModelAdmin, InlineModelAdmin
 from django.core import checks
-from js_asset import JS
+from js_asset import JS, JSON
 
 
 __all__ = ("OrderableAdmin",)
@@ -30,6 +30,7 @@ class OrderableAdmin(BaseModelAdmin):
                 "fieldUpDownArrows": self.ordering_field_up_down_arrows,
                 "renumberOnLoad": self.ordering_field_renumber_on_load,
             }
+            context_id = self.ordering_field
         else:
             # Find our helper.InlineAdminFormSet so that we may access
             # the formset instance and its prefix
@@ -50,6 +51,7 @@ class OrderableAdmin(BaseModelAdmin):
                 "stacked": isinstance(self, admin.StackedInline),
                 "tabular": isinstance(self, admin.TabularInline),
             }
+            context_id = helper.formset.prefix
 
         return super().media + forms.Media(
             css={
@@ -61,13 +63,8 @@ class OrderableAdmin(BaseModelAdmin):
             js=[
                 "admin/js/jquery.init.js",
                 "admin_ordering/jquery-ui.min.js",
-                JS(
-                    "admin_ordering/admin_ordering.js",
-                    {
-                        "class": "admin-ordering-context",
-                        "data-context": json.dumps(context),
-                    },
-                ),
+                "admin_ordering/admin_ordering.js",
+                JSON(context, id=f"admin-ordering-context-{context_id}"),
             ],
         )
 

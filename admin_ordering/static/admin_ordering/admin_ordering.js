@@ -67,13 +67,13 @@ django.jQuery(($) => {
     return $sortableHandle
   }
 
-  $(".admin-ordering-context:not(.activated)")
+  $('script[id^="admin-ordering-context-"]:not(.activated)')
     .addClass("activated")
     .each(function () {
       let $sortable
       let $sortableHandle
 
-      const data = JSON.parse(this.getAttribute("data-context"))
+      const data = JSON.parse(this.textContent)
       if (data.field.indexOf("-") === 0) {
         data.field = data.field.substring(1)
         data.fieldDesc = true
