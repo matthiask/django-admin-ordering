@@ -8,6 +8,7 @@ Next version
 
 - Future-proofed the library a bit by emitting JSON blobs instead of multiple
   script tags when using more than one orderable on one admin page.
+- Added Django 5.2a1.
 
 
 0.20 (2024-11-26)
