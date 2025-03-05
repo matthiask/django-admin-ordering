@@ -18,10 +18,9 @@ class OrderableAdminTest(TestCase):
         response = self.client.get(reverse("admin:testapp_parent1_add"))
 
         self.assertContains(response, "/static/admin_ordering/admin_ordering.js", 1)
-        self.assertContains(response, 'data-context="')
-        self.assertContains(response, "&quot;stacked&quot;: false")
-        self.assertContains(response, "&quot;tabular&quot;: true")
-        self.assertContains(response, "&quot;prefix&quot;: &quot;children&quot;")
+        self.assertContains(response, '"stacked": false')
+        self.assertContains(response, '"tabular": true')
+        self.assertContains(response, '"prefix": "children"')
 
     def test_parent2(self):
         self.login()
@@ -29,22 +28,20 @@ class OrderableAdminTest(TestCase):
         response = self.client.get(reverse("admin:testapp_parent2_add"))
 
         self.assertContains(response, "/static/admin_ordering/admin_ordering.js", 1)
-        self.assertContains(response, 'data-context="')
-        self.assertContains(response, "&quot;stacked&quot;: false")
-        self.assertContains(response, "&quot;tabular&quot;: true")
-        self.assertContains(response, "&quot;prefix&quot;: &quot;children&quot;")
+        self.assertContains(response, '"stacked": false')
+        self.assertContains(response, '"tabular": true')
+        self.assertContains(response, '"prefix": "children"')
 
     def test_parent3(self):
         self.login()
 
         response = self.client.get(reverse("admin:testapp_parent3_add"))
 
-        self.assertContains(response, "/static/admin_ordering/admin_ordering.js", 2)
-        self.assertContains(response, 'data-context="')
-        self.assertContains(response, "&quot;stacked&quot;: false")
-        self.assertContains(response, "&quot;tabular&quot;: true")
-        self.assertContains(response, "&quot;prefix&quot;: &quot;child3_set&quot;")
-        self.assertContains(response, "&quot;prefix&quot;: &quot;child3_set-2&quot;")
+        self.assertContains(response, "/static/admin_ordering/admin_ordering.js", 1)
+        self.assertContains(response, '"stacked": false')
+        self.assertContains(response, '"tabular": true')
+        self.assertContains(response, '"prefix": "child3_set"')
+        self.assertContains(response, '"prefix": "child3_set-2"')
 
     def test_parent4(self):
         self.login()
@@ -57,9 +54,9 @@ class OrderableAdminTest(TestCase):
 
         self.assertContains(response, "/static/admin_ordering/admin_ordering.js", 1)
         self.assertContains(response, 'value="42"')
-        self.assertNotContains(response, "&quot;prefix&quot;: ")
-        self.assertContains(response, "&quot;field&quot;: &quot;_orderaaaaa&quot;")
-        self.assertContains(response, "&quot;fieldHideInput&quot;: false")
+        self.assertNotContains(response, '"prefix": ')
+        self.assertContains(response, '"field": "_orderaaaaa"')
+        self.assertContains(response, '"fieldHideInput": false')
 
     def test_orderable_model(self):
         obj = Orderable.objects.create()
